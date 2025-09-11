@@ -19,14 +19,12 @@ html, body {
   background-color: #ffffff00;
 }
 
-/* Logo */
 .logo {
   height: 38px;
   width: 178px;
   margin-left: 12px;
 }
 
-/* 菜单导航 */
 .main-nav ul {
   display: flex;
   list-style: none;
@@ -54,15 +52,13 @@ html, body {
   font-weight: bold;
 }
 
-/* 右侧按钮区域 */
 .nav-right {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-left: 190px; /* 或者你喜欢的数值 */
+  margin-left: 190px;
 }
 
-/* 搜索按钮 */
 .search-btn {
   background: none;
   border: none;
@@ -72,7 +68,6 @@ html, body {
   color: #333;
 }
 
-/* 通用按钮样式 */
 .nav-btn {
   font-size: 18px;
   padding: 8px 16px;
@@ -82,7 +77,6 @@ html, body {
   font-weight: 500;
 }
 
-/* Email 按钮：边框风格 */
 .email-btn {
   background-color: transparent;
   color: #ff6200;
@@ -94,7 +88,6 @@ html, body {
   box-shadow: 0 0 6px rgba(255, 98, 0, 0.2);
 }
 
-/* Contact Us 按钮：实心风格 */
 .contact-btn {
   background-color: #ff6200;
   color: #fff;
@@ -108,6 +101,7 @@ html, body {
 
 /* 视频容器 */
 .video-container {
+  position: relative;
   width: 100%;
   max-width: 100vw;
   height: 65.5vh;
@@ -125,7 +119,23 @@ html, body {
   border: none;
 }
 
-/* slogan 区域 */
+.video-switch-btn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
 /* slogan 区域 */
 .slogan-container {
   width: 100%;
@@ -142,7 +152,7 @@ html, body {
 }
 
 .slogan-subtext {
-  font-size: 1.20rem;
+  font-size: 1.2rem;
   color: #666;
   margin-top: 18px;
 }
@@ -193,26 +203,16 @@ html, body {
   text-shadow: 1px 1px 3px rgb(0, 0, 0);
 }
 
-.environment {
-  background-image: url('pic1.png');
-}
+.environment { background-image: url('pic1.png'); }
+.what-we-do { background-image: url('pic2.png'); }
+.careers { background-image: url('pic3.png'); }
+.investors { background-image: url('epcc.png'); }
 
-.what-we-do {
-  background-image: url('pic2.png');
-}
-
-.careers {
-  background-image: url('pic3.png');
-}
-
-.investors {
-  background-image: url('epcc.png');
-}
-
+/* slogan extension */
 .slogan-extension {
   text-align: center;
   padding: 40px 20px;
-  background: rgba(255, 255, 255, 0.05); /* 或根据视频背景调整 */
+  background: rgba(255, 255, 255, 0.05);
   color: rgb(0, 0, 0);
 }
 
@@ -264,7 +264,7 @@ html, body {
   font-size: 14px;
 }
 
-/* 左文右视频区块样式 */
+/* 左文右视频区块 */
 .video-highlight-section {
   display: flex;
   flex-wrap: wrap;
@@ -318,6 +318,7 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* 合作伙伴 Logo */
 .partner-logos-section {
   display: flex;
   justify-content: center;
@@ -333,7 +334,7 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* 推荐Footer结构 */
+/* Footer */
 .site-footer {
   background-color: #f8f8f8;
   text-align: center;
@@ -360,33 +361,78 @@ html, body {
   color: #888;
 }
 
+/* 📱
+@media (max-width: 768px) {
+  /* 四格展示区 */
+  .feature-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 20px;
+  }
 
-/*Video Switch*/
+  .feature-box {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
 
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 100vw;
-  height: 65.5vh;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  background-color: #000;
-}
+  .overlay {
+    padding: 14px;
+    font-size: 0.95rem;
+    background: rgba(0, 0, 0, 0.4);
+  }
 
-.video-switch-btn {
-  position: absolute;
-  right: 20px; /* 改为 right 而不是 left */
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #ff6200;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  /* 五格展示区 */
+  .image-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .image-card {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .overlay-text {
+    padding: 12px;
+    font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .overlay-text h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .overlay-text p {
+    font-size: 13px;
+  }
+
+
+@media (max-width: 480px) {
+  .feature-grid,
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-box,
+  .image-card {
+    height: 200px;
+  }
+
+  .overlay-text h3 {
+    font-size: 15px;
+  }
+
+  .overlay-text p {
+    font-size: 12px;
+  }
 }
