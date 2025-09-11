@@ -1,0 +1,392 @@
+/* 全局设置 */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 导航容器 */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 33px;
+  padding: 0;
+  background-color: #ffffff00;
+}
+
+/* Logo */
+.logo {
+  height: 38px;
+  width: 178px;
+  margin-left: 12px;
+}
+
+/* 菜单导航 */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 18px;
+}
+
+.main-nav ul li:not(:first-child) {
+  margin-left: 45px;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 8px 1px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+  color: #ff6200;
+  border-bottom: 2px solid #ff6200;
+  font-weight: bold;
+}
+
+/* 右侧按钮区域 */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: 190px; /* 或者你喜欢的数值 */
+}
+
+/* 搜索按钮 */
+.search-btn {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* 通用按钮样式 */
+.nav-btn {
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+/* Email 按钮：边框风格 */
+.email-btn {
+  background-color: transparent;
+  color: #ff6200;
+  border: 1.5px solid #ff6200;
+}
+
+.email-btn:hover {
+  background-color: rgba(255, 98, 0, 0.1);
+  box-shadow: 0 0 6px rgba(255, 98, 0, 0.2);
+}
+
+/* Contact Us 按钮：实心风格 */
+.contact-btn {
+  background-color: #ff6200;
+  color: #fff;
+  border: none;
+}
+
+.contact-btn:hover {
+  background-color: #ea5a00;
+  box-shadow: 0 0 8px rgba(255, 98, 0, 0.3);
+}
+
+/* 视频容器 */
+.video-container {
+  width: 100%;
+  max-width: 100vw;
+  height: 65.5vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+/* slogan 区域 */
+/* slogan 区域 */
+.slogan-container {
+  width: 100%;
+  text-align: center;
+  padding: 80px;
+  background: #fff;
+}
+
+.slogan-text {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.slogan-subtext {
+  font-size: 1.20rem;
+  color: #666;
+  margin-top: 18px;
+}
+
+/* 四格展示区 */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.feature-box {
+  position: relative;
+  height: 477px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: #ff770000;
+  color: #fff;
+  text-align: left;
+}
+
+.overlay h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.overlay p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+
+.environment {
+  background-image: url('pic1.png');
+}
+
+.what-we-do {
+  background-image: url('pic2.png');
+}
+
+.careers {
+  background-image: url('pic3.png');
+}
+
+.investors {
+  background-image: url('epcc.png');
+}
+
+.slogan-extension {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05); /* 或根据视频背景调整 */
+  color: rgb(0, 0, 0);
+}
+
+.slogan-highlight {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+/* Grid 2 */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.image-card {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover {
+  transform: scale(1.1);
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.37);
+  color: #fff;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.overlay-text h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.overlay-text p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+/* 左文右视频区块样式 */
+.video-highlight-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 30px;
+  background-color: #f5f5f5;
+  gap: 40px;
+}
+
+.video-text {
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+.video-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.video-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.cta-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff6200;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.cta-link:hover {
+  background-color: #e85900;
+}
+
+.video-box {
+  flex: 1 1 400px;
+  max-width: 600px;
+}
+
+.video-box video {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.partner-logos-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #ffffff;
+}
+
+.logo-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* 推荐Footer结构 */
+.site-footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 12px;
+  color: #0000009f;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-note {
+  color: #888;
+}
+
+
+/*Video Switch*/
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 65.5vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+.video-switch-btn {
+  position: absolute;
+  right: 20px; /* 改为 right 而不是 left */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
