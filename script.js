@@ -48,29 +48,25 @@ document.querySelectorAll('.image-card').forEach(card => {
   });
 });
 
+//hamburger
+
 window.onload = () => {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileMenu = document.getElementById('mobileMenu');
 
-hamburgerBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('visible');
-});
+  hamburgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle('visible');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+      mobileMenu.classList.remove('visible');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    mobileMenu.classList.remove('visible');
+  });
 };
-
-document.addEventListener('click', (e) => {
-  const menu = document.getElementById('mobileMenu');
-  const hamburger = document.querySelector('.hamburger-btn');
-
-  // 如果点击的不是菜单本身，也不是汉堡按钮
-  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-    menu.style.display = 'none';
-  }
-});
-
-window.addEventListener('scroll', () => {
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (mobileMenu.style.display === 'block') {
-    mobileMenu.style.display = isVisible ? 'none' : 'block';
-  }
-});
 
