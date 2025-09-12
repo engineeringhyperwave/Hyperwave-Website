@@ -452,8 +452,14 @@ html, body {
   }
 
   .search-btn {
-    display: flex; /* 如果你不想在手机上显示搜索按钮 */
-  }
+  display:flex;
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #333;
+}
 
   .nav-btn {
     font-size: 14px;
