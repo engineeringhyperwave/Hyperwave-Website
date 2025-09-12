@@ -52,10 +52,9 @@ window.onload = () => {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileMenu = document.getElementById('mobileMenu');
 
-  hamburgerBtn.addEventListener('click', () => {
-    const isVisible = mobileMenu.style.display === 'block';
-    mobileMenu.style.display = isVisible ? 'none' : 'block';
-  });
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('visible');
+});
 };
 
 document.addEventListener('click', (e) => {
@@ -71,7 +70,7 @@ document.addEventListener('click', (e) => {
 window.addEventListener('scroll', () => {
   const mobileMenu = document.getElementById('mobileMenu');
   if (mobileMenu.style.display === 'block') {
-    mobileMenu.style.display = 'none';
+    mobileMenu.style.display = isVisible ? 'none' : 'block';
   }
 });
 

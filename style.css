@@ -99,6 +99,11 @@ html, body {
   box-shadow: 0 0 8px rgba(255, 98, 0, 0.3);
 }
 
+/* 默认隐藏（桌面） */
+.hamburger-btn {
+  display: none;
+}
+
 /* 视频容器 */
 .video-container {
   position: relative;
@@ -168,7 +173,7 @@ html, body {
 
 .feature-box {
   position: relative;
-  height: 477px;
+  height: 475px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
@@ -185,11 +190,17 @@ html, body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 20px;
-  background: #ff770000;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.485);
   color: #fff;
-  text-align: left;
+  box-sizing: border-box;
+  max-height: 170px; /* 限制最大高度 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 
 .overlay h3 {
   font-size: 1.2rem;
@@ -361,8 +372,141 @@ html, body {
   color: #888;
 }
 
-/* 📱
-@media (max-width: 768px) {
+ /* Phone */
+@media (max-width: 767px) {
+  .nav-container {
+    display: flex;
+    flex-direction: row; /* 横向排列 */
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .logo {
+    margin-left: 0;     /* 清除桌面版的左边距 */
+    margin-right: auto; /* 推向左边 */
+    display: block;
+    width: 120px;
+    height: auto;
+  }
+
+.nav-right {
+  display: flex;
+  flex-wrap: nowrap;         /* 不允许换行 */
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;         /* 推到右边 */
+  max-width: 100%;
+}
+
+  /* 保留 nav-btn 的通用样式 */
+  .nav-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  /* hamburger 独立样式 */
+  .hamburger-btn {
+    font-size: 20px;
+    padding: 6px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff0000;
+  }
+
+  /* email 保持原样 */
+  .email-btn {
+    background-color: transparent;
+    color: #ff6200;
+    border: 1.5px solid #ff6200;
+  }
+
+  .email-btn:hover {
+    background-color: rgba(255, 98, 0, 0.1);
+    box-shadow: 0 0 6px rgba(255, 98, 0, 0.2);
+  }
+
+  /* contact 保持原样 */
+  .contact-btn {
+    background-color: #ff6200;
+    color: #fff;
+    border: none;
+  }
+
+  .contact-btn:hover {
+    background-color: #ea5a00;
+    box-shadow: 0 0 8px rgba(255, 98, 0, 0.3);
+  }
+
+  .search-btn {
+    display: flex; /* 如果你不想在手机上显示搜索按钮 */
+  }
+
+  .nav-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .main-nav {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .main-nav ul {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .main-nav ul li a {
+    font-size: 14px;
+    padding: 6px 10px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  /* video-bacnground-container */
+ .video-container {
+    height: auto; /* 自动适应内容高度 */
+    max-height: 300px; /* 或根据需要限制最大高度 */
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* 防止裁剪内容 */
+  }
+
+  .video-switch-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    z-index: 10;
+  }
+}
+
+
+
   /* 四格展示区 */
   .feature-grid {
     display: grid !important;
@@ -372,7 +516,7 @@ html, body {
   }
 
   .feature-box {
-    height: 240px;
+    height: 475px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -434,5 +578,99 @@ html, body {
 
   .overlay-text p {
     font-size: 12px;
+  }
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.745);
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.mobile-menu li {
+  margin: 10px 0;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.mobile-menu.visible {
+  display: block;
+}
+
+/* iPad 专属样式 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-container {
+    padding: 16px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 140px;
+  }
+
+  .nav-right {
+    gap: 16px;
+  }
+
+  .nav-btn {
+    font-size: 15px;
+    padding: 8px 14px;
+  }
+
+  .main-nav ul {
+    display: none; /* 隐藏导航项，等待 hamburger 控制显示 */
+    justify-content: center;
+  }
+
+  .main-nav ul li a {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+
+  .video-container {
+    max-height: 400px;
+  }
+
+  .feature-box {
+    height: 360px;
+  }
+
+  .image-card {
+    height: 160px;
+  }
+
+  .overlay-text h3 {
+    font-size: 17px;
+  }
+
+  .overlay-text p {
+    font-size: 14px;
+  }
+
+  .hamburger-btn {
+    display: inline-block;
+    font-size: 22px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff6200;
+    transition: color 0.3s ease;
+  }
+
+  .hamburger-btn:hover {
+    color: #ff6200;
   }
 }
