@@ -9,25 +9,37 @@
 <body>
   <header class="header">
     <div class="nav-container">
-      <img src="logo1.png" alt="公司标志" class="logo">
+      <img src="logo1.png" alt="公司标志" class="logo" onclick="window.location.href='https://engineeringhyperwave.github.io/hyperwave-official-website/'" style="cursor: pointer;">
       <nav class="main-nav">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">News</a></li>
+          <li><a href="https://engineeringhyperwave.github.io/hyperwave-official-website/">Home</a></li>
+          <li><a href="https://hyper-wave.com/about-us-2/">About Us</a></li>
+          <li><a href="https://hyper-wave.com/products/">Products</a></li>
+          <li><a href="https://hyper-wave.com/portfolios/">Portfolio</a></li>
+          <li><a href="https://hyper-wave.com/services/">Services</a></li>
+          <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
+          <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
         </ul>
       </nav>
       <div class="nav-right">
-        <button class="search-btn">🔍︎</button>
+        <button class="search-btn" onclick="window.open('https://www.perplexity.ai/search/hyperwave-systems-engineering-.cKvyQoHSYeldISL1zJedw', '_blank')">🔍︎</button>
         <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=engineeringhyperwave@gmail.com', '_blank')">Email</button>
         <button class="nav-btn contact-btn" onclick="window.open('https://hyper-wave.carrd.co/', '_blank')">Contact Us</button>
+        <button class="hamburger-btn">≡</button>
       </div>
     </div>
   </header>
+
+  <ul id="mobileMenu" class="mobile-menu" style="display: none;">
+  <li><a href="https://engineeringhyperwave.github.io/hyperwave-official-website/">Home</a></li>
+  <li><a href="https://hyper-wave.com/about-us-2/">About Us</a></li>
+  <li><a href="https://hyper-wave.com/products/">Products</a></li>
+  <li><a href="https://hyper-wave.com/portfolios/">Portfolio</a></li>
+  <li><a href="https://hyper-wave.com/services/">Services</a></li>
+  <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
+  <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
+</ul>
+
 
   <div class="video-container">
     <video id="mainVideo" autoplay muted loop playsinline aria-hidden="true">
@@ -45,7 +57,7 @@
   <div class="feature-grid">
     <div class="feature-box environment">
       <div class="overlay">
-        <h3>About Us</h3>
+        <h3>ABOUT US</h3>
         <p>We are one of the leading company in professional engineering services and metering and industrial process analysis systems products.</p>
       </div>
     </div>
