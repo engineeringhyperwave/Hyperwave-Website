@@ -1,30 +1,18 @@
+// 视频切换逻辑
 let isOriginalVideo = true; // 初始状态为 2.mp4
 
 function switchVideo() {
   const video = document.getElementById('mainVideo');
   const source = video.querySelector('source');
 
-  if (isOriginalVideo) {
-    source.src = '3.mp4'; // 切换到新视频
-  } else {
-    source.src = '2.mp4'; // 切换回原视频
-  }
+  source.src = isOriginalVideo ? '3.mp4' : '2.mp4';
+  isOriginalVideo = !isOriginalVideo;
 
-  isOriginalVideo = !isOriginalVideo; // 状态反转
   video.load();
   video.play();
 }
 
-function toggleMenu() {
-  const nav = document.getElementById('mainNav');
-  nav.classList.toggle('active');
-}
-
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('active');
-}
-
+// 区块跳转逻辑
 document.querySelector('.environment').onclick = () => {
   window.open('https://hyper-wave.com/about-us-2/', '_blank');
 };
@@ -41,16 +29,16 @@ document.querySelector('.investors').onclick = () => {
   window.open('https://hyper-wave.com/portfolios/', '_blank');
 };
 
+// 图像卡片点击滚动至顶部
 document.querySelectorAll('.image-card').forEach(card => {
-  card.style.cursor = 'pointer'; // 鼠标提示
+  card.style.cursor = 'pointer';
   card.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
 
-//hamburger
-
-window.onload = () => {
+// 移动菜单展开与关闭
+document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -68,5 +56,4 @@ window.onload = () => {
   window.addEventListener('scroll', () => {
     mobileMenu.classList.remove('visible');
   });
-};
-
+});

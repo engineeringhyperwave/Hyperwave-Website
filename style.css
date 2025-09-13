@@ -104,6 +104,11 @@ html, body {
   display: none;
 }
 
+.mobile-menu {
+  display: none;
+}
+
+
 /* 视频容器 */
 .video-container {
   position: relative;
@@ -194,13 +199,12 @@ html, body {
   background: rgba(0, 0, 0, 0.485);
   color: #fff;
   box-sizing: border-box;
-  max-height: 170px; /* 限制最大高度 */
+  max-height: 170px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 
 .overlay h3 {
   font-size: 1.2rem;
@@ -356,274 +360,281 @@ html, body {
 
 .footer-links {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .footer-links a {
-  margin: 0 12px;
   color: #0000009f;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
 }
 
-.footer-note {
-  color: #888;
+
+/* Phone */
+
+@media (max-width: 768px) {
+  .main-nav,
+  .nav-right {
+    display: none;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .hamburger-btn {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff6200;
+  }
+
+.mobile-menu {
+  width: 100%;
+  max-width: 100%; /* 控制最大宽度 */
+  margin: 0 auto;    /* 居中显示 */
+  border-radius: 8px;
+  list-style: none;
+  padding: 0 20px; /* 左右都有边距 */
 }
 
- .device-phone .nav-container {
+.mobile-menu.visible {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  gap: 12px;
-  max-width: 100%;
+  flex-direction: column;
 }
 
-.device-phone .logo {
-  margin-left: 0;
-  margin-right: auto;
+  .mobile-menu li {
+    margin-bottom: 12px;
+  }
+
+  .mobile-menu a,
+  .mobile-menu .nav-btn {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+  }
+
+.mobile-menu .nav-btn {
   display: block;
-  width: 120px;
-  height: auto;
-}
-
-.device-phone .nav-right {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  align-items: center;
-  margin-left: auto;
-  max-width: 100%;
-}
-
-.device-phone .nav-btn {
-  font-size: 14px;
-  padding: 6px 12px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 6px;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 16px;
   font-weight: 500;
-  transition: all 0.3s ease;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
 }
 
-.device-phone .hamburger-btn {
-  font-size: 20px;
-  padding: 6px 8px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  display: inline-block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #ff0000;
-}
 
-.device-phone .email-btn {
+.mobile-menu .email-btn {
   background-color: transparent;
   color: #ff6200;
   border: 1.5px solid #ff6200;
 }
 
-.device-phone .email-btn:hover {
-  background-color: rgba(255, 98, 0, 0.1);
-  box-shadow: 0 0 6px rgba(255, 98, 0, 0.2);
+.mobile-menu .email-btn:hover {
+  background-color: rgba(255, 98, 0, 0.08);
 }
 
-.device-phone .contact-btn {
+.mobile-menu .contact-btn {
   background-color: #ff6200;
   color: #fff;
   border: none;
 }
 
-.device-phone .contact-btn:hover {
+.mobile-menu .contact-btn:hover {
   background-color: #ea5a00;
-  box-shadow: 0 0 8px rgba(255, 98, 0, 0.3);
 }
 
-.device-phone .search-btn {
-  display: flex;
-  background: none;
-  border: none;
-  padding: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  color: #ff6200;
+.video-container {
+  width: 100vw;
+  height: 50vw;
+  overflow: hidden;
+  background-color: #000;
 }
 
-.device-phone .main-nav {
-  width: 100%;
-  margin-top: 12px;
+.slogan-container {
+  text-align: left;
+  padding: 40px 25px;
 }
 
-.device-phone .main-nav ul {
-  display: none;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+.slogan-container h1 {
+  font-size: 30px;
+  margin-bottom: 16px;
+  padding: 25px 0px;
 }
 
-.device-phone .main-nav ul li a {
-  font-size: 14px;
-  padding: 6px 10px;
-  color: #333;
-  text-decoration: none;
+.slogan-container p {
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.device-phone .video-container {
+  .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  box-sizing: border-box;
   height: auto;
-  max-height: 300px;
 }
 
-.device-phone .video-container video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.device-phone .video-switch-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
-  z-index: 10;
-}
-
-.device-phone .feature-grid,
-.device-phone .image-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
-  padding: 20px;
-}
-
-.device-phone .feature-box {
-  height: 475px;
+.feature-box {
+  position: relative;
+  height: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.feature-box:hover {
+  transform: translateY(-5px);
 }
 
-.device-phone .overlay {
-  padding: 14px;
-  font-size: 0.95rem;
-  background: rgba(0, 0, 0, 0.4);
+/* Ipad */
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .main-nav,
+  .nav-right {
+    display: none;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .hamburger-btn {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff6200;
+  }
+
+  .mobile-menu {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    list-style: none;
+    padding: 0 20px;
+  }
+
+  .mobile-menu.visible {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu li {
+    margin-bottom: 12px;
+  }
+
+  .mobile-menu a,
+  .mobile-menu .nav-btn {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .mobile-menu .nav-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+  }
+
+  .mobile-menu .email-btn {
+    background-color: transparent;
+    color: #ff6200;
+    border: 1.5px solid #ff6200;
+  }
+
+  .mobile-menu .email-btn:hover {
+    background-color: rgba(255, 98, 0, 0.08);
+  }
+
+  .mobile-menu .contact-btn {
+    background-color: #ff6200;
+    color: #fff;
+    border: none;
+  }
+
+  .mobile-menu .contact-btn:hover {
+    background-color: #ea5a00;
+  }
+
+  .video-container {
+    width: 100vw;
+    height: 50vw;
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .slogan-container {
+    text-align: left;
+    padding: 40px 25px;
+  }
+
+  .slogan-container h1 {
+    font-size: 30px;
+    margin-bottom: 16px;
+    padding: 25px 0px;
+  }
+
+  .slogan-container p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    height: auto;
+  }
+
+  .feature-box {
+    position: relative;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  .feature-box:hover {
+    transform: translateY(-5px);
+  }
 }
-
-.device-phone .image-card {
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.device-phone .overlay-text {
-  padding: 12px;
-  font-size: 0.85rem;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.device-phone .overlay-text h3 {
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-.device-phone .overlay-text p {
-  font-size: 13px;
-}
-
-.device-phone .feature-grid,
-.device-phone .image-grid {
-  grid-template-columns: 1fr;
-}
-
-.device-phone .feature-box,
-.device-phone .image-card {
-  height: 200px;
-}
-
-.device-phone .overlay-text h3 {
-  font-size: 15px;
-}
-
-.device-phone .overlay-text p {
-  font-size: 12px;
-}
-
-.device-tablet .nav-container {
-  padding: 16px 24px;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-/* iPad 专属样式 */
-
-.device-tablet .logo {
-  width: 140px;
-}
-
-.device-tablet .nav-right {
-  gap: 16px;
-}
-
-.device-tablet .nav-btn {
-  font-size: 15px;
-  padding: 8px 14px;
-}
-
-.device-tablet .main-nav ul {
-  display: none;
-  justify-content: center;
-}
-
-.device-tablet .main-nav ul li a {
-  font-size: 15px;
-  padding: 8px 12px;
-}
-
-.device-tablet .video-container {
-  max-height: 400px;
-}
-
-.device-tablet .feature-box {
-  height: 360px;
-}
-
-.device-tablet .image-card {
-  height: 160px;
-}
-
-.device-tablet .overlay-text h3 {
-  font-size: 17px;
-}
-
-.device-tablet .overlay-text p {
-  font-size: 14px;
-}
-
-.device-tablet .hamburger-btn {
-  display: inline-block;
-  font-size: 22px;
-  padding: 8px 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #ff6200;
-  transition: color 0.3s ease;
-}
-
-.device-tablet .hamburger-btn:hover {
-  color: #ff6200;
 }

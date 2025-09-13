@@ -8,29 +8,33 @@
 </head>
 <body>
   <header class="header">
-    <div class="nav-container">
-      <img src="logo1.png" alt="公司标志" class="logo" onclick="window.location.href='https://engineeringhyperwave.github.io/hyperwave/'" style="cursor: pointer;">
-      <nav class="main-nav">
-        <ul>
-          <li><a href="https://engineeringhyperwave.github.io/hyperwave/">Home</a></li>
-          <li><a href="https://hyper-wave.com/about-us-2/">About Us</a></li>
-          <li><a href="https://hyper-wave.com/products/">Products</a></li>
-          <li><a href="https://hyper-wave.com/portfolios/">Portfolio</a></li>
-          <li><a href="https://hyper-wave.com/services/">Services</a></li>
-          <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
-          <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <button class="search-btn" onclick="window.open('https://www.perplexity.ai/search/hyperwave-systems-engineering-.cKvyQoHSYeldISL1zJedw', '_blank')">🔍︎</button>
-        <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=engineeringhyperwave@gmail.com', '_blank')">Email</button>
-        <button class="nav-btn contact-btn" onclick="window.open('https://hyper-wave.carrd.co/', '_blank')">Contact Us</button>
-        <button class="hamburger-btn">≡</button>
-      </div>
-    </div>
-  </header>
+  <div class="nav-container">
+    <img src="logo1.png" alt="公司标志" class="logo" onclick="window.location.href='https://engineeringhyperwave.github.io/hyperwave/'" style="cursor: pointer;">
+    <button class="hamburger-btn">≡</button>
+    
+    <!-- 桌面导航（仅桌面显示） -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="https://engineeringhyperwave.github.io/hyperwave/">Home</a></li>
+        <li><a href="https://hyper-wave.com/about-us-2/">About Us</a></li>
+        <li><a href="https://hyper-wave.com/products/">Products</a></li>
+        <li><a href="https://hyper-wave.com/portfolios/">Portfolio</a></li>
+        <li><a href="https://hyper-wave.com/services/">Services</a></li>
+        <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
+        <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
+      </ul>
+    </nav>
 
-  <ul id="mobileMenu" class="mobile-menu" style="display: none;">
+    <div class="nav-right">
+      <button class="search-btn" onclick="window.open('https://www.perplexity.ai/search/hyperwave-systems-engineering-.cKvyQoHSYeldISL1zJedw', '_blank')">🔍︎</button>
+      <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=engineeringhyperwave@gmail.com', '_blank')">Email</button>
+      <button class="nav-btn contact-btn" onclick="window.open('https://hyper-wave.carrd.co/', '_blank')">Contact Us</button>
+    </div>
+  </div>
+</header>
+
+<!-- 移动菜单（仅移动端显示） -->
+<ul id="mobileMenu" class="mobile-menu">
   <li><a href="https://engineeringhyperwave.github.io/hyperwave/">Home</a></li>
   <li><a href="https://hyper-wave.com/about-us-2/">About Us</a></li>
   <li><a href="https://hyper-wave.com/products/">Products</a></li>
@@ -38,6 +42,8 @@
   <li><a href="https://hyper-wave.com/services/">Services</a></li>
   <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
   <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
+  <li><button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=engineeringhyperwave@gmail.com', '_blank')">Email</button></li>
+  <li><button class="nav-btn contact-btn" onclick="window.open('https://hyper-wave.carrd.co/', '_blank')">Contact Us</button></li>
 </ul>
 
 
