@@ -243,26 +243,26 @@ observer.observe(document.body, { childList: true, subtree: true });
 
   // ✅ 加载 Group 4 图片
   const group4 = document.querySelectorAll('.policy-group')[3];
-  group4.innerHTML = '';
-  
-  let i = 1;
+group4.innerHTML = '';
 
-  function loadNextImage() {
-    const img = new Image();
-    img.src = `Policy/EMPLOYEE POLICY AND HANDBOOK/EMPLOYEE (${i}).png`;
-    img.alt = `Employee Page ${i}`;
-    img.onload = () => {
-      bindZoom(img);
-      group4.appendChild(img);
-      i++;
-      loadNextImage();
-    };
-    img.onerror = () => {
-      console.log(`✅ Group 4 图片加载完毕，共 ${i - 1} 张`);
-    };
-  }
+let i = 1;
 
-  loadNextImage();
+function loadNextImage() {
+  const img = new Image();
+  img.src = encodeURI(`ehandbook/employee (${i}).png`);
+  img.alt = `Employee Page ${i}`;
+  img.onload = () => {
+    bindZoom(img);
+    group4.appendChild(img);
+    i++;
+    loadNextImage();
+  };
+  img.onerror = () => {
+    console.log(`✅ Group 4 图片加载完毕，共 ${i - 1} 张`);
+  };
+}
+
+loadNextImage();
 });
 
 function checkZoomBinding(img) {
