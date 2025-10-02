@@ -291,3 +291,12 @@ for (let i = 2; i <= 4; i++) {
   img.onload = () => bindZoom(img);
   group12.appendChild(img);
 }
+
+function scrollBrands(direction) {
+  const scroller = document.getElementById('brandScroller');
+  const scrollAmount = 300;
+  scroller.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
