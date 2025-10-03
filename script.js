@@ -125,9 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.appendChild(modalImg);
   document.body.appendChild(modal);
 
-  function bindZoom(img) {
+  // ✅ 全局函数：图片放大绑定
+  window.bindZoom = function (img) {
   const src = img.getAttribute('src');
-  if (src) { // ✅ 不再限制格式
+  const hasLink = img.closest('a'); // 检查是否被 <a> 包裹
+
+  if (src && !hasLink) {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => {
       scale = 1;
@@ -135,22 +138,42 @@ document.addEventListener('DOMContentLoaded', () => {
       modalImg.style.transform = `scale(${scale})`;
       modal.style.display = 'flex';
     });
+  } else if (hasLink) {
+    console.log(`🔗 ${src} → 跳转链接已存在，跳过 zoom`);
   }
-}
+};
 
-const observer = new MutationObserver(() => {
-  document.querySelectorAll('img').forEach(img => {
-    if (!img.dataset.zoomBound) {
-      bindZoom(img);
-      img.dataset.zoomBound = 'true'; // 防止重复绑定
-      console.log(`🖼️ ${img.src} → ✅ 自动绑定 zoom`);
-    }
+
+  // ✅ 全局函数：检查是否已绑定
+  window.checkZoomBinding = function (img) {
+    const src = img.getAttribute('src');
+    const bound = !!img.onclick;
+    console.log(`🖼️ ${src} → ${bound ? '✅ 已绑定 zoom' : '❌ 未绑定 zoom'}`);
+  };
+
+  // ✅ 页面加载后自动绑定所有图片
+  window.addEventListener('load', () => {
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.dataset.zoomBound) {
+        window.bindZoom(img);
+        img.dataset.zoomBound = 'true';
+      }
+    });
   });
-});
 
-observer.observe(document.body, { childList: true, subtree: true });
+  // ✅ 自动监听新增图片
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.dataset.zoomBound) {
+        window.bindZoom(img);
+        img.dataset.zoomBound = 'true';
+        console.log(`🖼️ ${img.src} → ✅ 自动绑定 zoom`);
+      }
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 
-
+  // 🔍 放大图支持滚轮缩放
   modal.addEventListener('wheel', (e) => {
     e.preventDefault();
     const rect = modalImg.getBoundingClientRect();
@@ -189,27 +212,14 @@ observer.observe(document.body, { childList: true, subtree: true });
 
   // 🎠 轮播标题逻辑
   const titles = [
-  "AML POLICY",
-  "ANTI BRIBERY AND ANTI CORRUPTION POLICY",
-  "DRUG AND ALCOHOL POLICY STATEMENT",
-  "EMPLOYEE POLICY AND HANDBOOK",
-  "ENVIRONMENTAL POLICY",
-  "HOUSEKEEPING POLICY",
-  "HUMAN RIGHTS COMMITMENT",
-  "MEMO HOTEL AND FLIGHT BOOKING",
-  "MEMO OT AND WORKING ON REST DAY OR PH CALCULATION",
-  "MEMO REMINDER ABOUT THE CARRY FORWARD LEAVE POLICY",
-  "MEMO REMINDER INFOTECH FOR ATTENDANCE AND LEAVE",
-  "MEMO REPLACEMENT LEAVE PROCEDURE",
-  "MEMO SWITCH OFF LIGHTS AND ACS BEFORE LEAVE OFFICE",
-  "NO SMOKING POLICY",
-  "OSHE POLICY",
-  "PPE POLICY",
-  "QUALITY POLICY",
-  "SEXUAL HARASSMENT POLICY",
-  "STOP WORK POLICY",
-  "TRAINING POLICY"
-];
+    "AML POLICY", "ANTI BRIBERY AND ANTI CORRUPTION POLICY", "DRUG AND ALCOHOL POLICY STATEMENT",
+    "EMPLOYEE POLICY AND HANDBOOK", "ENVIRONMENTAL POLICY", "HOUSEKEEPING POLICY",
+    "HUMAN RIGHTS COMMITMENT", "MEMO HOTEL AND FLIGHT BOOKING", "MEMO OT AND WORKING ON REST DAY OR PH CALCULATION",
+    "MEMO REMINDER ABOUT THE CARRY FORWARD LEAVE POLICY", "MEMO REMINDER INFOTECH FOR ATTENDANCE AND LEAVE",
+    "MEMO REPLACEMENT LEAVE PROCEDURE", "MEMO SWITCH OFF LIGHTS AND ACS BEFORE LEAVE OFFICE",
+    "NO SMOKING POLICY", "OSHE POLICY", "PPE POLICY", "QUALITY POLICY", "SEXUAL HARASSMENT POLICY",
+    "STOP WORK POLICY", "TRAINING POLICY"
+  ];
 
   const groups = document.querySelectorAll(".policy-group");
   const titleEl = document.getElementById("carousel-title");
@@ -227,76 +237,11 @@ observer.observe(document.body, { childList: true, subtree: true });
     updateCarousel(currentIndex);
   });
 
-  document.getElementById("nextBtn").addEventListener("click", () => {
+    document.getElementById("nextBtn").addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % groups.length;
     updateCarousel(currentIndex);
   });
 
-  updateCarousel(currentIndex);
+}); // ← 这是你漏掉的结尾
 
-  // ✅ 绑定所有图片放大功能
-  document.querySelectorAll('img').forEach(bindZoom);
 
-  // ✅ 单独确保首页图片也被绑定
-  const indexImg = document.querySelector('.partner-logos-section img');
-  if (indexImg) bindZoom(indexImg);
-
-  // ✅ 加载 Group 4 图片
-  const group4 = document.querySelectorAll('.policy-group')[3];
-group4.innerHTML = '';
-
-let i = 1;
-
-function loadNextImage() {
-  const img = new Image();
-  img.src = encodeURI(`ehandbook/employee (${i}).png`);
-  img.alt = `Employee Page ${i}`;
-  img.onload = () => {
-    bindZoom(img);
-    group4.appendChild(img);
-    i++;
-    loadNextImage();
-  };
-  img.onerror = () => {
-    console.log(`✅ Group 4 图片加载完毕，共 ${i - 1} 张`);
-  };
-}
-
-loadNextImage();
-});
-
-function checkZoomBinding(img) {
-  const src = img.getAttribute('src');
-  const bound = !!img.onclick;
-  console.log(`🖼️ ${src} → ${bound ? '✅ 已绑定 zoom' : '❌ 未绑定 zoom'}`);
-}
-document.querySelectorAll('img').forEach(checkZoomBinding);
-
-const group9 = document.querySelectorAll('.policy-group')[8]; // 第9组
-
-for (let i = 2; i <= 4; i++) {
-  const img = new Image();
-  img.src = encodeURI(`Policy/MEMO OT/memo (${i}).png`);
-  img.alt = `Memo OT Page ${i}`;
-  img.onload = () => bindZoom(img);
-  group9.appendChild(img);
-}
-
-const group12 = document.querySelectorAll('.policy-group')[11]; // 第12组
-
-for (let i = 2; i <= 4; i++) {
-  const img = new Image();
-  img.src = encodeURI(`Policy/MEMO REPLACEMENT/memo replacement (${i}).png`);
-  img.alt = `Memo Replacement Page ${i}`;
-  img.onload = () => bindZoom(img);
-  group12.appendChild(img);
-}
-
-function scrollBrands(direction) {
-  const scroller = document.getElementById('brandScroller');
-  const scrollAmount = 300;
-  scroller.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-}
