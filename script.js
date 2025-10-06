@@ -245,3 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
 }); // ← 这是你漏掉的结尾
 
 
+// 🎠 品牌滚动函数
+window.scrollBrands = function (direction) {
+  const scroller = document.getElementById('brandScroller');
+  const scrollAmount = 300;
+  scroller.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+};
