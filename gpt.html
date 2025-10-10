@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyperwave</title>
+  <link rel="stylesheet" href="gpt.css">
+</head>
+<body>
+  <header class="header">
+  <div class="nav-container">
+    <img src="logo1.png" alt="公司标志" class="logo" onclick="window.location.href='https://engineeringhyperwave.github.io/hyperwave/'" style="cursor: pointer;">
+    <button class="hamburger-btn">≡</button>
+    
+    <!-- 桌面导航（仅桌面显示） -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="https://engineeringhyperwave.github.io/hyperwave/">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="https://hyper-wave.com/services/">Services</a></li>
+        <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
+        <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <button class="search-btn" onclick="window.open('https://www.perplexity.ai/search/hyperwave-systems-engineering-.cKvyQoHSYeldISL1zJedw', '_blank')">🔍︎</button>
+      <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=engineeringhyperwave@gmail.com', '_blank')">Email</button>
+      <button class="nav-btn contact-btn" onclick="window.open('https://hyper-wave.carrd.co/', '_blank')">Contact Us</button>
+    </div>
+  </div>
+</header>
+
+<!-- 移动菜单（仅移动端显示） -->
+<ul id="mobileMenu" class="mobile-menu">
+  <li><a href="https://engineeringhyperwave.github.io/hyperwave/">Home</a></li>
+  <li><a href="about-us.html">About Us</a></li>
+  <li><a href="products.html">Products</a></li>
+  <li><a href="portfolio.html">Portfolio</a></li>
+  <li><a href="https://hyper-wave.com/services/">Services</a></li>
+  <li><a href="https://hyper-wave.com/careers/">Careers</a></li>
+  <li><a href="https://hyper-wave.com/corporate-social-responsibility/">News</a></li>
+  <li><button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=engineeringhyperwave@gmail.com', '_blank')">Email</button></li>
+  <li><button class="nav-btn contact-btn" onclick="window.open('https://hyper-wave.carrd.co/', '_blank')">Contact Us</button></li>
+</ul>
+
+<main class="main-content">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Introducing HypveGPT</h1>
+          <p class="subtitle">Nice to meet the HypveGPT — an AI language model built for thoughtful interaction.</p>
+          <button class="cta-button" onclick="document.getElementById('videoSection').scrollIntoView({ behavior: 'smooth' })">
+            Try on HypveGPT
+          </button>
+        </div>
+      </section>
+
+     <section id="videoSection" class="video-section">
+  <div class="video-wrapper">
+    <video autoplay muted controls loop width="100%" height="500">
+      <source src="gpt-h.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+<section class="promo-box" style="display: flex; align-items: center; justify-content: space-between; padding: 40px; max-width: 1000px; margin: auto; gap: 40px; font-family: sans-serif;">
+  <div class="promo-video" style="flex: 1; max-width: 400px;">
+    <video autoplay muted loop controls style="width: 100%; aspect-ratio: 9 / 16; object-fit: contain; border-radius: 8px;">
+      <source src="gpt-s.mp4" type="video/mp4" />
+      您的浏览器不支持视频标签。
+    </video>
+  </div>
+<div class="promo-content" style="flex: 1;">
+  <h2 style="font-size: 28px; margin-bottom: 10px;">Experience the Power of HypveGPT</h2>
+  <p style="font-size: 16px; color: #555;">Let AI accelerate your creativity and productivity.</p>
+  <a href="https://your-link.com" target="_blank" class="promo-link">Try HypveGPT</a>
+</div>
+</section>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="https://hyper-wave.carrd.co/">Contact Us</a>
+      <a href="careers.html">Careers</a>
+      <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd">LinkedIn</a>
+    </div>
+    <p class="footer-note">© 2025 Hyperwave System Engineering. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
