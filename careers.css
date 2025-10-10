@@ -122,91 +122,172 @@ html, body {
   display: none;
 }
 
-/* Portfolio 项目容器 */
-.portfolio-section {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 20px;
+/* 主体内容 */
+.careers-main {
+  padding: 2.8rem;
+  text-align: center;
 }
 
-/* 每个项目卡片 */
-.portfolio-item {
+.careers-main h1,
+.careers-main h2 {
+  color: #ff6200;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.careers-main p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.careers-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.branch-locations {
+  padding: 2.8rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+}
+
+.branch-locations h2 {
+  font-size: 2.8rem;
+  color: #ff6200;
+  margin-bottom: 2rem;
+}
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.branch-card {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 24px;
-  margin-bottom: 40px;
+  padding: 1.8rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 标题与副文本 */
-.portfolio-item h3 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+.branch-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.branch-card h3 {
+  font-size: 1.6rem;
+  color: #ff6200;
+  margin-bottom: 1rem;
+}
+
+.branch-card iframe {
+  width: 100%;
+  height: 200px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.branch-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.branch-card a {
+  display: inline-block;
+  color: #ff6200;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.branch-card a:hover {
+  color: #ea5a00;
+}
+
+.branch-phone {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.branch-phone strong {
+  color: #ff6200;
+  margin-right: 6px;
+}
+
+.phone-number {
   color: #ff6200;
 }
-.portfolio-item p {
-  font-size: 1em;
-  color: #666;
-  margin-bottom: 16px;
+
+.why-join h2 {
+  font-size: 2.8rem;
+  color: #ff6200;
 }
 
-/* 图片轮播容器 */
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 16px;
-  padding-bottom: 10px;
-}
-
-/* 控制图片大小 */
-.carousel img {
-  max-width: 100%;
-  width: 240px;         /* 固定宽度，适合大多数屏幕 */
-  height: auto;
+.why-join img {
+  width: 88%;
+  max-width: 85%;
+  height: 50%;
+  max-height: 20%;
   border-radius: 8px;
-  scroll-snap-align: start;
-  flex-shrink: 0;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
+}
+
+
+/* Gallery */
+
+.gallery-section {
+  padding: 2.8rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.gallery-section h2 {
+  font-size: 2.7rem;
+  color: #ff6200;
+  margin-bottom: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: zoom-in;
   transition: transform 0.3s ease;
 }
 
-/* 鼠标悬停效果 */
-.carousel img:hover {
-  transform: scale(1.05);
-}
-
-/* 滚动条美化 */
-.carousel::-webkit-scrollbar {
-  height: 8px;
-}
-.carousel::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
-}
-
-/* 响应式支持 */
-@media (max-width: 768px) {
-  .carousel img {
-    max-width: 180px;
-  }
-
-  .portfolio-item {
-    padding: 16px;
-  }
-
-  .portfolio-item h3 {
-    font-size: 1.2em;
-  }
-
-  .portfolio-item p {
-    font-size: 0.95em;
-  }
+.gallery-grid img:hover {
+  transform: scale(1.03);
 }
 
 
-
-/* ========== 页脚 ========== */
+/* Footer */
 .site-footer {
   background-color: #f8f8f8;
   text-align: center;
@@ -317,86 +398,48 @@ html, body {
   background-color: #ea5a00;
 }
 }
-/* Ipad */
 
-@media (min-width: 1024px) and (max-width: 1366px) {
-  .main-nav,
-  .nav-right {
-    display: none;
+.branch-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: 0 1rem;
+    justify-content: center;
   }
 
-  .nav-container {
-    justify-content: space-between;
-    padding: 12px 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  .branch-card {
+    padding: 1.5rem;
   }
 
-  .hamburger-btn {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff6200;
+  .branch-card h3 {
+    font-size: 1.4rem;
   }
 
-  .mobile-menu {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    border-radius: 8px;
-    list-style: none;
-    padding: 0 20px;
+  .branch-card p,
+  .branch-phone {
+    font-size: 1rem;
   }
 
-  .mobile-menu.visible {
-    display: flex;
-    flex-direction: column;
+  .branch-card iframe {
+    height: 180px;
   }
 
-  .mobile-menu li {
-    margin-bottom: 12px;
-  }
-
-  .mobile-menu a,
-  .mobile-menu .nav-btn {
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    width: 100%;
-    text-align: left;
-  }
-
-  .mobile-menu .nav-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-  }
-
-  .mobile-menu .email-btn {
-    background-color: transparent;
-    color: #ff6200;
-    border: 1.5px solid #ff6200;
-  }
-
-  .mobile-menu .email-btn:hover {
-    background-color: rgba(255, 98, 0, 0.08);
-  }
-
-  .mobile-menu .contact-btn {
-    background-color: #ff6200;
-    color: #fff;
-    border: none;
-  }
-
-  .mobile-menu .contact-btn:hover {
-    background-color: #ea5a00;
-  }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+
+

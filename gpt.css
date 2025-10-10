@@ -122,70 +122,117 @@ html, body {
   display: none;
 }
 
-
-/* ========== 品牌墙区域 ========== */
-.brand-grid-section {
-  padding: 40px 20px;
+/* ========== Hero Section ========== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  background-color: #f9f9f9;
+  padding: 100px 20px 20px;
 }
 
-.brand-grid-section h2 {
-  font-size: 2.8rem;
-  color: #ff6200;
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #ff6200; /* 标题颜色改为主题色 */
+}
+
+.subtitle {
+  font-size: 20px;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.cta-button {
+  background-color: #ff6200;; /* 按钮背景改为主题色 */
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   margin-bottom: 10px;
 }
 
-.brand-grid-section p {
+.cta-button:hover {
+  background-color: #ea5a00; /* hover 状态为更深的橙色 */
+}
+
+/* ========== Video Section ========== */
+.video-wrapper {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 广告区块整体布局 */
+.promo-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 40px;
+  font-family: sans-serif;
+}
+
+/* 视频区域 */
+.promo-video {
+  flex: 1;
+  max-width: 400px;
+}
+
+.promo-video video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 文本区域 */
+.promo-content {
+  flex: 1;
+}
+
+.promo-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #ff6200;
+}
+
+.promo-content p {
   font-size: 16px;
   color: #555;
-  margin-bottom: 30px;
 }
 
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.brand-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  width: 100%;
-  max-width: 140px;
-  transition: transform 0.3s;
-  text-align: center;
-}
-
-.brand-card:hover {
-  transform: scale(1.05);
-}
-
-.brand-card img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 8px;
-}
-
-.brand-card a {
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-.brand-card span {
-  display: block;
-  font-weight: bold;
-  font-size: 14px;
+.promo-content a {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 16px;
   color: #ff6200;
-  text-decoration: none !important;
+  text-decoration: underline;
+  transition: text-decoration 0.3s ease;
 }
 
-/* ========== 页脚 ========== */
+.promo-link:hover {
+  font-size: 17.5px;
+  text-decoration: underline;
+}
+
+/* Footer */
 .site-footer {
   background-color: #f8f8f8;
   text-align: center;
@@ -212,7 +259,6 @@ html, body {
   text-decoration: underline;
 }
 
-/* ========== 响应式优化 ========== */
 /* Phone */
 
 @media (max-width: 768px) {
@@ -295,6 +341,7 @@ html, body {
 
 .mobile-menu .contact-btn:hover {
   background-color: #ea5a00;
+}
 }
 
 /* Ipad */
@@ -379,174 +426,4 @@ html, body {
   .mobile-menu .contact-btn:hover {
     background-color: #ea5a00;
   }
-}}
-
-/* Phone */
-
-@media (max-width: 768px) {
-  .main-nav,
-  .nav-right {
-    display: none;
-  }
-
-  .nav-container {
-    justify-content: space-between;
-    padding: 12px 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .hamburger-btn {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff6200;
-  }
-
-.mobile-menu {
-  width: 100%;
-  max-width: 100%; /* 控制最大宽度 */
-  margin: 0 auto;    /* 居中显示 */
-  border-radius: 8px;
-  list-style: none;
-  padding: 0 20px; /* 左右都有边距 */
-}
-
-.mobile-menu.visible {
-  display: flex;
-  flex-direction: column;
-}
-
-  .mobile-menu li {
-    margin-bottom: 12px;
-  }
-
-  .mobile-menu a,
-  .mobile-menu .nav-btn {
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    width: 100%;
-    text-align: left;
-  }
-
-.mobile-menu .nav-btn {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 12px 0;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-}
-
-
-.mobile-menu .email-btn {
-  background-color: transparent;
-  color: #ff6200;
-  border: 1.5px solid #ff6200;
-}
-
-.mobile-menu .email-btn:hover {
-  background-color: rgba(255, 98, 0, 0.08);
-}
-
-.mobile-menu .contact-btn {
-  background-color: #ff6200;
-  color: #fff;
-  border: none;
-}
-
-.mobile-menu .contact-btn:hover {
-  background-color: #ea5a00;
-}
-
-
-/* Ipad */
-
-@media (min-width: 1024px) and (max-width: 1366px) {
-  .main-nav,
-  .nav-right {
-    display: none;
-  }
-
-  .nav-container {
-    justify-content: space-between;
-    padding: 12px 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .hamburger-btn {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff6200;
-  }
-
-  .mobile-menu {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    border-radius: 8px;
-    list-style: none;
-    padding: 0 20px;
-  }
-
-  .mobile-menu.visible {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mobile-menu li {
-    margin-bottom: 12px;
-  }
-
-  .mobile-menu a,
-  .mobile-menu .nav-btn {
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    width: 100%;
-    text-align: left;
-  }
-
-  .mobile-menu .nav-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-  }
-
-  .mobile-menu .email-btn {
-    background-color: transparent;
-    color: #ff6200;
-    border: 1.5px solid #ff6200;
-  }
-
-  .mobile-menu .email-btn:hover {
-    background-color: rgba(255, 98, 0, 0.08);
-  }
-
-  .mobile-menu .contact-btn {
-    background-color: #ff6200;
-    color: #fff;
-    border: none;
-  }
-
-  .mobile-menu .contact-btn:hover {
-    background-color: #ea5a00;
-  }
-}
 }

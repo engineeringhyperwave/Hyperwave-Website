@@ -1,41 +1,28 @@
-/* ========== 全局设置 ========== */
+/* 全局设置 */
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   overflow-x: hidden;
-  font-family: Arial, sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.main-content {
-  flex: 1;
-}
-
-/* ========== 顶部导航栏 ========== */
+/* 导航容器 */
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 33px;
   padding: 0;
-  background-color: transparent;
+  background-color: #ffffff00;
 }
 
 .logo {
   height: 38px;
   width: 178px;
   margin-left: 12px;
-  cursor: pointer;
 }
 
 .main-nav ul {
@@ -69,8 +56,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-left: auto;
-  margin-right: 20px;
+  margin-left: 190px;
 }
 
 .search-btn {
@@ -79,7 +65,7 @@ html, body {
   padding: 10px;
   font-size: 18px;
   cursor: pointer;
-  color: #ff6200;
+  color:#ff6200;
 }
 
 .nav-btn {
@@ -113,7 +99,7 @@ html, body {
   box-shadow: 0 0 8px rgba(255, 98, 0, 0.3);
 }
 
-/* ========== 移动菜单 ========== */
+/* 默认隐藏（桌面） */
 .hamburger-btn {
   display: none;
 }
@@ -122,70 +108,62 @@ html, body {
   display: none;
 }
 
+/* privacy.css */
 
-/* ========== 品牌墙区域 ========== */
-.brand-grid-section {
-  padding: 40px 20px;
-  text-align: center;
+/* 通用设置 */
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
 }
 
-.brand-grid-section h2 {
-  font-size: 2.8rem;
-  color: #ff6200;
-  margin-bottom: 10px;
-}
-
-.brand-grid-section p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.brand-card {
-  background: #fff;
-  border: 1px solid #ddd;
+main {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
   border-radius: 8px;
-  padding: 10px;
-  width: 100%;
-  max-width: 140px;
-  transition: transform 0.3s;
+}
+
+/* 标题样式 */
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  color: #ff6200;
   text-align: center;
 }
 
-.brand-card:hover {
-  transform: scale(1.05);
+h2 {
+  font-size: 1.5em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #ff6200;
 }
 
-.brand-card img {
-  max-width: 100%;
-  height: auto;
+/* 段落和列表 */
+p {
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+ul li {
   margin-bottom: 8px;
 }
 
-.brand-card a {
-  text-decoration: none !important;
-  color: inherit !important;
+/* 联系方式样式 */
+section.privacy-policy p:last-of-type {
+  margin-bottom: 0;
 }
 
-.brand-card span {
-  display: block;
-  font-weight: bold;
-  font-size: 14px;
-  color: #ff6200;
-  text-decoration: none !important;
-}
-
-/* ========== 页脚 ========== */
+/* Footer */
 .site-footer {
   background-color: #f8f8f8;
   text-align: center;
@@ -212,7 +190,6 @@ html, body {
   text-decoration: underline;
 }
 
-/* ========== 响应式优化 ========== */
 /* Phone */
 
 @media (max-width: 768px) {
@@ -296,176 +273,7 @@ html, body {
 .mobile-menu .contact-btn:hover {
   background-color: #ea5a00;
 }
-
-/* Ipad */
-
-@media (min-width: 1024px) and (max-width: 1366px) {
-  .main-nav,
-  .nav-right {
-    display: none;
-  }
-
-  .nav-container {
-    justify-content: space-between;
-    padding: 12px 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .hamburger-btn {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff6200;
-  }
-
-  .mobile-menu {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    border-radius: 8px;
-    list-style: none;
-    padding: 0 20px;
-  }
-
-  .mobile-menu.visible {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mobile-menu li {
-    margin-bottom: 12px;
-  }
-
-  .mobile-menu a,
-  .mobile-menu .nav-btn {
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    width: 100%;
-    text-align: left;
-  }
-
-  .mobile-menu .nav-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-  }
-
-  .mobile-menu .email-btn {
-    background-color: transparent;
-    color: #ff6200;
-    border: 1.5px solid #ff6200;
-  }
-
-  .mobile-menu .email-btn:hover {
-    background-color: rgba(255, 98, 0, 0.08);
-  }
-
-  .mobile-menu .contact-btn {
-    background-color: #ff6200;
-    color: #fff;
-    border: none;
-  }
-
-  .mobile-menu .contact-btn:hover {
-    background-color: #ea5a00;
-  }
-}}
-
-/* Phone */
-
-@media (max-width: 768px) {
-  .main-nav,
-  .nav-right {
-    display: none;
-  }
-
-  .nav-container {
-    justify-content: space-between;
-    padding: 12px 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .hamburger-btn {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff6200;
-  }
-
-.mobile-menu {
-  width: 100%;
-  max-width: 100%; /* 控制最大宽度 */
-  margin: 0 auto;    /* 居中显示 */
-  border-radius: 8px;
-  list-style: none;
-  padding: 0 20px; /* 左右都有边距 */
 }
-
-.mobile-menu.visible {
-  display: flex;
-  flex-direction: column;
-}
-
-  .mobile-menu li {
-    margin-bottom: 12px;
-  }
-
-  .mobile-menu a,
-  .mobile-menu .nav-btn {
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    width: 100%;
-    text-align: left;
-  }
-
-.mobile-menu .nav-btn {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 12px 0;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-}
-
-
-.mobile-menu .email-btn {
-  background-color: transparent;
-  color: #ff6200;
-  border: 1.5px solid #ff6200;
-}
-
-.mobile-menu .email-btn:hover {
-  background-color: rgba(255, 98, 0, 0.08);
-}
-
-.mobile-menu .contact-btn {
-  background-color: #ff6200;
-  color: #fff;
-  border: none;
-}
-
-.mobile-menu .contact-btn:hover {
-  background-color: #ea5a00;
-}
-
-
 /* Ipad */
 
 @media (min-width: 1024px) and (max-width: 1366px) {
@@ -549,4 +357,15 @@ html, body {
     background-color: #ea5a00;
   }
 }
-}
+
+ main {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
