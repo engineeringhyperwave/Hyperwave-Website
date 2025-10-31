@@ -146,6 +146,14 @@ html, body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
+.section-title {
+  color: #ff6200;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
 .brand-scroller-section {
   position: relative;
   display: flex;
