@@ -148,7 +148,7 @@ html, body {
 
 .section-title {
   color: #ff6200;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 600;
   text-align: center;
   margin: 40px 0 20px;
@@ -395,7 +395,7 @@ html, body {
 .video-text h2 {
   font-size: 28px;
   margin-bottom: 15px;
-  color: #333;
+  color: #ff6200;
 }
 
 .video-text p {
