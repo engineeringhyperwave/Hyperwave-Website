@@ -15,16 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 🔗 区块跳转逻辑
-  const links = {
-    '.environment': 'https://hyper-wave.com/about-us-2/',
-    '.what-we-do': 'https://hyper-wave.com/',
-    '.careers': 'https://hyper-wave.com/careers/',
-    '.investors': 'https://hyper-wave.com/portfolios/'
-  };
-  Object.entries(links).forEach(([selector, url]) => {
-    const el = document.querySelector(selector);
-    if (el) el.onclick = () => window.open(url, '_blank');
-  });
+const links = {
+  '.environment': 'about-us.html',           // 或你真实的 about 页
+  '.what-we-do'  : 'services.html',          // 重点：改成 services 页面
+  '.careers'     : 'careers.html',
+  '.investors'   : 'portfolio.html'          // 注意你原来写的是 portfolios，确认路径对不对
+};
+
+Object.entries(links).forEach(([selector, url]) => {
+  const el = document.querySelector(selector);
+  if (el) {
+    el.style.cursor = 'pointer';  // 建议加上，让用户知道可以点
+    el.onclick = () => location.href = url;  // 本页跳转，体验更好
+  }
+});
 
   // 🖼️ 图像卡片点击滚动至顶部
   document.querySelectorAll('.image-card').forEach(card => {
