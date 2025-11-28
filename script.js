@@ -31,10 +31,11 @@ Object.entries(links).forEach(([selector, url]) => {
 });
 
   // 🖼️ 图像卡片点击滚动至顶部
-  document.querySelectorAll('.image-card').forEach(card => {
+  document.querySelectorAll('.image-card').forEach((card, i) => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const url = ['services.html#maintenance','services.html#calibration','services.html#metering','services.html#aftersales','services.html#training'][i];
+      window.location.href = url;
     });
   });
 
