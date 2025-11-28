@@ -40,23 +40,33 @@ Object.entries(links).forEach(([selector, url]) => {
   });
 
   // 📱 移动菜单展开与关闭
+  // 移动菜单展开与关闭（已彻底修复手机点击 image-card 不跳转的问题）
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileMenu = document.getElementById('mobileMenu');
+
   if (hamburgerBtn && mobileMenu) {
+    // 点击汉堡按钮打开/关闭菜单
     hamburgerBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       mobileMenu.classList.toggle('visible');
     });
+
+    // 全局点击关闭菜单，但保护 image-card 的点击不被吃掉
     document.addEventListener('click', (e) => {
+      // 关键一行：如果点的是 image-card 或它的子元素，直接什么都不做
+      if (e.target.closest('.image-card')) return;
+
+      // 否则正常判断：点到菜单外面就关闭
       if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
         mobileMenu.classList.remove('visible');
       }
     });
+
+    // 滚动时也关闭菜单
     window.addEventListener('scroll', () => {
       mobileMenu.classList.remove('visible');
     });
   }
-
   // 🔢 数字计数器动画（循环）
   const counters = document.querySelectorAll('.counter');
   counters.forEach(counter => {
