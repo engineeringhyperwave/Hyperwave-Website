@@ -17,8 +17,18 @@ html, body {
   min-height: 100vh;
 }
 
+/* === 专治 careers.html footer 太“高”的视觉问题 === */
 .main-content {
   flex: 1;
+  padding-bottom: 80px; /* 推开 footer，内容少时不悬空 */
+}
+
+/* 可选：加个渐变底色，视觉更自然 */
+.main-content::after {
+  content: '';
+  display: block;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #f9f9f9);
 }
 
 /* ========== 顶部导航栏 ========== */
@@ -313,6 +323,15 @@ html, body {
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+.footer-note {
+  margin: 0 !important;           /* 去掉 <p> 默认外边距 */
+  padding: 0 !important;
+  font-size: 14px !important;     /* 原来 14px → 11px */
+  line-height: 1.3 !important;    /* 紧凑行高 */
+  color: #555 !important;         /* 淡化，不抢戏 */
+}
+
 
 /* Phone */
 
