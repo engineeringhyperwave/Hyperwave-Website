@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 🔗 区块跳转逻辑
-const links = {
-  '.environment': 'about-us.html',           // 或你真实的 about 页
-  '.what-we-do'  : 'services.html',          // 重点：改成 services 页面
-  '.careers'     : 'careers.html',
-  '.investors'   : 'portfolio.html'          // 注意你原来写的是 portfolios，确认路径对不对
-};
+  const links = {
+    '.environment': 'about-us.html',
+    '.what-we-do': 'services.html',
+    '.careers': 'careers.html',
+    '.investors': 'projects.html'
+  };
 
-Object.entries(links).forEach(([selector, url]) => {
-  const el = document.querySelector(selector);
-  if (el) {
-    el.style.cursor = 'pointer';  // 建议加上，让用户知道可以点
-    el.onclick = () => location.href = url;  // 本页跳转，体验更好
-  }
-});
+  Object.entries(links).forEach(([selector, url]) => {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.style.cursor = 'pointer';
+      el.onclick = () => location.href = url;
+    }
+  });
 
   // 🖼️ 图像卡片点击滚动至顶部
   document.querySelectorAll('.image-card').forEach((card, i) => {
@@ -40,33 +40,27 @@ Object.entries(links).forEach(([selector, url]) => {
   });
 
   // 📱 移动菜单展开与关闭
-  // 移动菜单展开与关闭（已彻底修复手机点击 image-card 不跳转的问题）
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileMenu = document.getElementById('mobileMenu');
 
   if (hamburgerBtn && mobileMenu) {
-    // 点击汉堡按钮打开/关闭菜单
     hamburgerBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       mobileMenu.classList.toggle('visible');
     });
 
-    // 全局点击关闭菜单，但保护 image-card 的点击不被吃掉
     document.addEventListener('click', (e) => {
-      // 关键一行：如果点的是 image-card 或它的子元素，直接什么都不做
       if (e.target.closest('.image-card')) return;
-
-      // 否则正常判断：点到菜单外面就关闭
       if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
         mobileMenu.classList.remove('visible');
       }
     });
 
-    // 滚动时也关闭菜单
     window.addEventListener('scroll', () => {
       mobileMenu.classList.remove('visible');
     });
   }
+
   // 🔢 数字计数器动画（循环）
   const counters = document.querySelectorAll('.counter');
   counters.forEach(counter => {
@@ -142,31 +136,20 @@ Object.entries(links).forEach(([selector, url]) => {
 
   // ✅ 全局函数：图片放大绑定
   window.bindZoom = function (img) {
-  const src = img.getAttribute('src');
-  const hasLink = img.closest('a'); // 检查是否被 <a> 包裹
-
-  if (src && !hasLink) {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', () => {
-      scale = 1;
-      modalImg.src = src;
-      modalImg.style.transform = `scale(${scale})`;
-      modal.style.display = 'flex';
-    });
-  } else if (hasLink) {
-    console.log(`🔗 ${src} → 跳转链接已存在，跳过 zoom`);
-  }
-};
-
-
-  // ✅ 全局函数：检查是否已绑定
-  window.checkZoomBinding = function (img) {
     const src = img.getAttribute('src');
-    const bound = !!img.onclick;
-    console.log(`🖼️ ${src} → ${bound ? '✅ 已绑定 zoom' : '❌ 未绑定 zoom'}`);
+    const hasLink = img.closest('a'); // 检查是否被 <a> 包裹
+    if (src && !hasLink) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        scale = 1;
+        modalImg.src = src;
+        modalImg.style.transform = `scale(${scale})`;
+        modal.style.display = 'flex';
+      });
+    }
   };
 
-  // ✅ 页面加载后自动绑定所有图片
+  // 页面加载后自动绑定所有图片
   window.addEventListener('load', () => {
     document.querySelectorAll('img').forEach(img => {
       if (!img.dataset.zoomBound) {
@@ -176,19 +159,18 @@ Object.entries(links).forEach(([selector, url]) => {
     });
   });
 
-  // ✅ 自动监听新增图片
+  // 自动监听新增图片
   const observer = new MutationObserver(() => {
     document.querySelectorAll('img').forEach(img => {
       if (!img.dataset.zoomBound) {
         window.bindZoom(img);
         img.dataset.zoomBound = 'true';
-        console.log(`🖼️ ${img.src} → ✅ 自动绑定 zoom`);
       }
     });
   });
   observer.observe(document.body, { childList: true, subtree: true });
 
-  // 🔍 放大图支持滚轮缩放
+  // 支持滚轮缩放
   modal.addEventListener('wheel', (e) => {
     e.preventDefault();
     const rect = modalImg.getBoundingClientRect();
@@ -202,6 +184,7 @@ Object.entries(links).forEach(([selector, url]) => {
     modalImg.style.transform = `scale(${scale})`;
   });
 
+  // 📱 手势缩放 & 点击关闭
   let lastDistance = null;
   modal.addEventListener('touchmove', (e) => {
     if (e.touches.length === 2) {
@@ -225,47 +208,52 @@ Object.entries(links).forEach(([selector, url]) => {
     modalImg.src = '';
   });
 
-  // 🎠 轮播标题逻辑
+  // 🎠 轮播标题逻辑（排除 MEMO 并对应多图）
+  const allGroups = Array.from(document.querySelectorAll('.policy-group'));
+  const groups = allGroups.filter(group => {
+    const img = group.querySelector('img');
+    if(!img) return false;
+    return !img.getAttribute('src').toLowerCase().includes('memo');
+  });
+
   const titles = [
     "AML POLICY", "ANTI BRIBERY AND ANTI CORRUPTION POLICY", "DRUG AND ALCOHOL POLICY STATEMENT",
     "EMPLOYEE POLICY AND HANDBOOK", "ENVIRONMENTAL POLICY", "HOUSEKEEPING POLICY",
-    "HUMAN RIGHTS COMMITMENT", "MEMO HOTEL AND FLIGHT BOOKING", "MEMO OT AND WORKING ON REST DAY OR PH CALCULATION",
-    "MEMO REMINDER ABOUT THE CARRY FORWARD LEAVE POLICY", "MEMO REMINDER INFOTECH FOR ATTENDANCE AND LEAVE",
-    "MEMO REPLACEMENT LEAVE PROCEDURE", "MEMO SWITCH OFF LIGHTS AND ACS BEFORE LEAVE OFFICE",
-    "NO SMOKING POLICY", "OSHE POLICY", "PPE POLICY", "QUALITY POLICY", "SEXUAL HARASSMENT POLICY",
-    "STOP WORK POLICY", "TRAINING POLICY"
+    "HUMAN RIGHTS COMMITMENT", "NO SMOKING POLICY", "OSHE POLICY", "PPE POLICY",
+    "QUALITY POLICY", "SEXUAL HARASSMENT POLICY", "STOP WORK POLICY", "TRAINING POLICY"
   ];
 
-  const groups = document.querySelectorAll(".policy-group");
   const titleEl = document.getElementById("carousel-title");
   let currentIndex = 0;
 
   function updateCarousel(index) {
     groups.forEach((group, i) => {
       group.classList.toggle("active", i === index);
+      const imgs = group.querySelectorAll('img');
+      imgs.forEach((img, j) => img.style.display = j === 0 ? 'block' : 'none');
     });
     titleEl.textContent = titles[index];
   }
+
+  updateCarousel(currentIndex);
 
   document.getElementById("prevBtn").addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + groups.length) % groups.length;
     updateCarousel(currentIndex);
   });
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
+  document.getElementById("nextBtn").addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % groups.length;
     updateCarousel(currentIndex);
   });
 
-}); // ← 这是你漏掉的结尾
-
-
-// 🎠 品牌滚动函数
-window.scrollBrands = function (direction) {
-  const scroller = document.getElementById('brandScroller');
-  const scrollAmount = 300;
-  scroller.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-};
+  // 🎠 品牌滚动函数
+  window.scrollBrands = function (direction) {
+    const scroller = document.getElementById('brandScroller');
+    const scrollAmount = 300;
+    scroller.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+});
