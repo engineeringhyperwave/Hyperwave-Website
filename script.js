@@ -242,18 +242,22 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel(currentIndex);
   });
 
+// 轮播的 nextBtn 事件监听（保持不变）
   document.getElementById("nextBtn").addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % groups.length;
     updateCarousel(currentIndex);
   });
 
-  // 🎠 品牌滚动函数
-  window.scrollBrands = function (direction) {
-    const scroller = document.getElementById('brandScroller');
-    const scrollAmount = 300;
-    scroller.scrollBy({
-      left: direction * scrollAmount,
-      behavior: 'smooth'
-    });
-  };
-});
+});   // ← 这一行是 DOMContentLoaded 的正确结束！到这里就结束了！
+
+// ====================== 下面这整段必须写在外面！======================
+window.scrollBrands = function (direction) {
+  const scroller = document.getElementById('brandScroller');
+  if (!scroller) return;
+
+  const scrollAmount = 320; // 你可以自己调
+  scroller.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+};
