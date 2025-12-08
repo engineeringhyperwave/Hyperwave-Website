@@ -209,46 +209,51 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 🎠 轮播标题逻辑（排除 MEMO 并对应多图）
-  const allGroups = Array.from(document.querySelectorAll('.policy-group'));
-  const groups = allGroups.filter(group => {
-    const img = group.querySelector('img');
-    if(!img) return false;
-    return !img.getAttribute('src').toLowerCase().includes('memo');
+const allGroups = Array.from(document.querySelectorAll('.policy-group'));
+const groups = allGroups.filter(group => {
+  const img = group.querySelector('img');
+  if(!img) return false;
+
+  const src = img.getAttribute('src').toLowerCase();
+  // 排除 MEMO 或包含 employee handbook
+  return !src.includes('memo') && !src.includes('employee');
+});
+
+// 对应的标题数组，只保留存在的 groups
+const titles = [
+  "AML POLICY", "ANTI BRIBERY AND ANTI CORRUPTION POLICY", "DRUG AND ALCOHOL POLICY STATEMENT",
+  // "EMPLOYEE POLICY AND HANDBOOK"  <- 已去掉
+  "ENVIRONMENTAL POLICY", "HOUSEKEEPING POLICY",
+  "HUMAN RIGHTS COMMITMENT", "NO SMOKING POLICY", "OSHE POLICY", "PPE POLICY",
+  "QUALITY POLICY", "SEXUAL HARASSMENT POLICY", "STOP WORK POLICY", "TRAINING POLICY"
+];
+
+// 保持原来的轮播逻辑不变
+const titleEl = document.getElementById("carousel-title");
+let currentIndex = 0;
+
+function updateCarousel(index) {
+  groups.forEach((group, i) => {
+    group.classList.toggle("active", i === index);
+    const imgs = group.querySelectorAll('img');
+    imgs.forEach((img, j) => img.style.display = j === 0 ? 'block' : 'none');
   });
+  titleEl.textContent = titles[index];
+}
 
-  const titles = [
-    "AML POLICY", "ANTI BRIBERY AND ANTI CORRUPTION POLICY", "DRUG AND ALCOHOL POLICY STATEMENT",
-    "EMPLOYEE POLICY AND HANDBOOK", "ENVIRONMENTAL POLICY", "HOUSEKEEPING POLICY",
-    "HUMAN RIGHTS COMMITMENT", "NO SMOKING POLICY", "OSHE POLICY", "PPE POLICY",
-    "QUALITY POLICY", "SEXUAL HARASSMENT POLICY", "STOP WORK POLICY", "TRAINING POLICY"
-  ];
+updateCarousel(currentIndex);
 
-  const titleEl = document.getElementById("carousel-title");
-  let currentIndex = 0;
-
-  function updateCarousel(index) {
-    groups.forEach((group, i) => {
-      group.classList.toggle("active", i === index);
-      const imgs = group.querySelectorAll('img');
-      imgs.forEach((img, j) => img.style.display = j === 0 ? 'block' : 'none');
-    });
-    titleEl.textContent = titles[index];
-  }
-
+document.getElementById("prevBtn").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + groups.length) % groups.length;
   updateCarousel(currentIndex);
+});
 
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + groups.length) % groups.length;
-    updateCarousel(currentIndex);
-  });
+document.getElementById("nextBtn").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % groups.length;
+  updateCarousel(currentIndex);
+});
 
-// 轮播的 nextBtn 事件监听（保持不变）
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % groups.length;
-    updateCarousel(currentIndex);
-  });
-
-});   // ← 这一行是 DOMContentLoaded 的正确结束！到这里就结束了！
+}); // ← 这一行是 DOMContentLoaded 的正确结束！到这里就结束了！
 
 // ====================== 下面这整段必须写在外面！======================
 window.scrollBrands = function (direction) {
