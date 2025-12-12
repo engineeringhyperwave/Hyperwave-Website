@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Hyperwave</title>
+  <link rel="icon" type="image/x-icon" href="h.ico">
+  <!-- 引入你的样式表 -->
+  <link rel="stylesheet" href="contact.css">
+  <!-- 建议引入 portfolio.css 或 style.css 以保持 Header/Footer 样式一致 -->
+  <link rel="stylesheet" href="portfolio.css"> 
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html"><img src="logo1.png" alt="公司标志" class="logo" style="cursor: pointer;"></a>
+      <button class="hamburger-btn">≡</button>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="gpt.html">GPT</a></li>
+        </ul>
+      </nav>
+  
+      <div class="nav-right">
+        <button class="search-btn" onclick="location.href='gpt.html'">🔍︎</button>
+        <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')">Email</button>
+        <button class="nav-btn contact-btn" onclick="location.href='contact-us.html'">Contact Us</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 移动菜单 -->
+  <ul id="mobileMenu" class="mobile-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="gpt.html">GPT</a></li>
+    <li><a class="nav-btn email-btn" href="mailto:info@hyper-wave.com">Email</a></li>
+    <li><button class="nav-btn contact-btn" onclick="location.href='contact-us.html'">Contact Us</button></li>
+  </ul>
+
+  <!-- main 内容开始 -->
+  <main>
+    
+    <!-- 第一部分：General Enquiry (点击逻辑与Header按钮一致) -->
+    <section class="general-enquiry-section">
+      <div class="enquiry-box">
+        <h1>Contact Us</h1>
+        <p class="enquiry-text">For any enquiry, please contact below:-</p>
+        
+        <!-- 这里就是点击后打开 Gmail 的区域 -->
+        <div class="email-highlight" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')" style="cursor: pointer;">
+          <span class="email-label">Email: </span>
+          <span class="email-address">Info@hyper-wave.com</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二部分：Our Branches (数据来自 Careers) -->
+<!-- 第二部分：Our Branches (已修复地图链接) -->
+    <section class="branch-locations">
+  <h2>Our Branches Across Malaysia & International</h2>
+  <div class="branch-grid">
+
+    <div class="branch-card">
+      <h3>Kota Kinabalu, Sabah</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30173.651838936486!2d116.0702320287805!3d5.988970697147748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b6988adfaed5b%3A0x2267db852a59af49!2sHyperwave%20Systems%20Engineering!5e1!3m2!1sen!2smy!4v1765354620733!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p>Unit 130, 1st Floor, Wisma Sabah, 88300 Kota Kinabalu, Sabah, Malaysia.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+6 088 256 044</span></p>
+      <a href="https://maps.app.goo.gl/e2JTLs2Mw8FWy5JL7" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Tamparuli, Sabah</h3>
+      <iframe src="https://www.google.com/maps?q=Tamparuli+Sabah&t=k&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      <p>1st & 2nd Floor, Lot 5, Jalan Bontoi, 89257 Tamparuli, Sabah, Malaysia.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+6 088 798 044</span></p>
+      <a href="https://maps.google.com/?q=Tamparuli+Sabah" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Puchong, Selangor</h3>
+      <iframe src="https://www.google.com/maps?q=4-G+Jalan+Kenari+12a+Puchong&t=k&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      <p>No 4-G, Jalan Kenari 12A, Bandar Puchong Jaya, 47100 Puchong, Selangor, Malaysia.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+60 3 8070 4498</span></p>
+      <a href="https://maps.google.com/?q=4-G+Jalan+Kenari+12a+Puchong" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Bintulu, Sarawak</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d397.98169847753206!2d113.09848130976141!3d3.2618790991789317!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x321dc48185f99957%3A0x11213b587c6a0de7!2sHyperwave%20Systems%20Engineering%20Sdn%20Bhd!5e1!3m2!1sen!2sus!4v1765357411593!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p>No. 5 Lot 2579 & No. 6 Lot 2580, Kidurong Gateway, Jalan Kidurong, 97000 Bintulu, Sarawak.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+6 086 348 883</span></p>
+      <a href="https://maps.app.goo.gl/7naxnKxMiNtHtyKN8" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Dungun, Terengganu</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5345.961135459119!2d103.442278706243!3d4.604568826265693!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c80dfd8b6be237%3A0x188cf60982b42b53!2sHyperwave%20Systems%20Engineering%20Sdn%20Bhd!5e1!3m2!1sen!2sus!4v1765357490794!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p>PT 12510 (Plot A20 & A21), Kawasan Perusahaan Cacar, Mukim Kuala Paka, 23100 Dungun, Terengganu, Malaysia.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+60 9 827 4508</span></p>
+      <a href="https://maps.app.goo.gl/EgSkJaBFVBr6MNw96" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Melaka</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30315.379761814867!2d102.14165210723877!3d2.2726510685174786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1fbb0c1473735%3A0xb3504d6636bf0bad!2sHyperwave%20Systems%20Engineering%20Sdn%20Bhd!5e1!3m2!1sen!2sus!4v1765357596985!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p>No. 9518-E & 9518-F, Jalan PBR 19, Kawasan Perindustrian Bukit Rambai, 75250 Melaka.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+60 6 351 6208</span></p>
+      <a href="https://maps.app.goo.gl/Lht86DxzUJL8HAsb8" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Kota Tinggi, Johor</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.0003629594885!2d104.21213057472507!3d1.5597065984257397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da4db36df06b8b%3A0xf59aa22372a77537!2sHyperwave%20Systems%20Engineering%20Sdn.%20Bhd.!5e1!3m2!1sen!2sus!4v1765357687370!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p>PTB 1322, Jalan Perindustrian A1, Kawasan Perindustrian Fasa 1, Bandar Penawar, 81930 Kota Tinggi, Johor, Malaysia.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+6 07 822 1044</span></p>
+      <a href="https://maps.app.goo.gl/QXZJvDTSeMJSA1tW8" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Xiamen, China</h3>
+      <iframe src="https://www.google.com/maps?q=Xiamen+China&t=k&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      <p>Room 1603, Lianfeng Building, No. 409 Lianqian East Road, Xiamen, 361008 China.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+86 592 2122 977 / +86 592 2122 877</span></p>
+      <a href="https://maps.google.com/?q=Xiamen+China" target="_blank">📍 View on Map</a>
+    </div>
+
+    <div class="branch-card">
+      <h3>Bangkok, Thailand</h3>
+      <iframe src="https://www.google.com/maps?q=Bangkok+Thailand&t=k&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      <p>99/33 Soi Watweluwanaram 7, Donmuang, Donmuang Bangkok, Thailand 10210.</p>
+      <p class="branch-phone"><strong>☎</strong> <span class="phone-number">+66 2524 4421</span></p>
+      <a href="https://maps.google.com/?q=Bangkok+Thailand" target="_blank">📍 View on Map</a>
+    </div>
+
+  </div>
+</section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="careers.html">Careers</a>
+      <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd/about/">LinkedIn</a>
+    </div>
+    <p class="footer-note">© 2025 Hyperwave Systems Engineering. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
