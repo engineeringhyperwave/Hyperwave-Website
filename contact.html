@@ -33,7 +33,7 @@
       <div class="nav-right">
         <button class="search-btn" onclick="location.href='gpt.html'">🔍︎</button>
         <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')">Email</button>
-        <button class="nav-btn contact-btn" onclick="location.href='contact-us.html'">Contact Us</button>
+        <button class="nav-btn contact-btn" onclick="location.href='contact.html'">Contact Us</button>
       </div>
     </div>
   </header>
@@ -54,19 +54,21 @@
   <!-- main 内容开始 -->
   <main>
     
-    <!-- 第一部分：General Enquiry (点击逻辑与Header按钮一致) -->
-    <section class="general-enquiry-section">
-      <div class="enquiry-box">
-        <h1>Contact Us</h1>
-        <p class="enquiry-text">For any enquiry, please contact below:-</p>
-        
-        <!-- 这里就是点击后打开 Gmail 的区域 -->
-        <div class="email-highlight" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')" style="cursor: pointer;">
-          <span class="email-label">Email: </span>
-          <span class="email-address">Info@hyper-wave.com</span>
-        </div>
-      </div>
-    </section>
+<div class="email-highlight"
+     onclick="
+       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+         // 手机逻辑
+         window.location.href = 'mailto:info@hyper-wave.com';
+       } else {
+         // 电脑逻辑
+         window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank');
+       }
+     "
+     style="cursor: pointer;">
+  <span class="email-label">Email: </span>
+  <span class="email-address">info@hyper-wave.com</span>
+</div>
+
 
     <!-- 第二部分：Our Branches (数据来自 Careers) -->
 <!-- 第二部分：Our Branches (已修复地图链接) -->
