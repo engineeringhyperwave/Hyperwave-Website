@@ -54,20 +54,31 @@
   <!-- main 内容开始 -->
   <main>
     
-<div class="email-highlight"
-     onclick="
-       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-         // 手机逻辑
-         window.location.href = 'mailto:info@hyper-wave.com';
-       } else {
-         // 电脑逻辑
-         window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank');
-       }
-     "
-     style="cursor: pointer;">
-  <span class="email-label">Email: </span>
-  <span class="email-address">info@hyper-wave.com</span>
-</div>
+    <!-- 第一部分：General Enquiry (点击逻辑与Header按钮一致) -->
+<section class="general-enquiry-section">
+  <div class="enquiry-box">
+    <h1>Contact Us</h1>
+    <p class="enquiry-text">For any enquiry, please contact below:-</p>
+
+    <div class="email-highlight"
+         style="cursor: pointer;"
+         onclick='
+           if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+             window.location.href = "mailto:info@hyper-wave.com";
+           } else {
+             window.open("https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com", "_blank");
+           }
+         '>
+      <span class="email-label">Email: </span>
+      <span class="email-address">info@hyper-wave.com</span>
+    </div>
+
+  </div>  <!-- ←← 加回缺失的 enquiry-box 关闭标签 -->
+</section>  <!-- ←← 加回缺失的 general-enquiry-section 关闭标签 -->
+
+
+<section class="branch-locations">
+
 
 
     <!-- 第二部分：Our Branches (数据来自 Careers) -->
