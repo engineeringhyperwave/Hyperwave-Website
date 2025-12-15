@@ -266,3 +266,4 @@ window.scrollBrands = function (direction) {
     behavior: 'smooth'
   });
 };
+
