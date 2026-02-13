@@ -605,6 +605,25 @@ html, body {
   transform: translateY(-5px);
 }
 
+ .image-grid {
+    grid-template-columns: 1fr; /* 单列显示，每张图独占一行 */
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .image-card {
+    height: auto; /* 高度自适应图片 */
+    min-height: 180px; /* 保证最小高度 */
+  }
+
+  .overlay-text h3 {
+    font-size: 16px;
+  }
+
+  .overlay-text p {
+    font-size: 14px;
+  }
+
 /* Ipad */
 
 @media (min-width: 1024px) and (max-width: 1366px) {
