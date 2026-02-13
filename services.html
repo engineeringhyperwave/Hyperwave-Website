@@ -21,13 +21,13 @@
         <li><a href="products.html">Products</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="gpt.html">GPT</a></li>
+        <li><a href="csr.html">CSR</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
 
     <div class="nav-right">
-      <button class="search-btn" onclick="location.href='gpt.html'">🔍︎</button>
+      <button class="search-btn" onclick="location.href='about-us.html'">🔍︎</button>
       <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')">Email</button>
       <button class="nav-btn contact-btn" onclick="location.href='contact.html'">Contact Us</button>
   </div>
@@ -41,7 +41,8 @@
   <li><a href="projects.html">Projects</a></li>
   <li><a href="services.html">Services</a></li>
   <li><a href="careers.html">Careers</a></li>
-  <li><a href="gpt.html">GPT</a></li>
+  <li><a href="csr.html">CSR</a></li>
+  <li><a href="contact.html">Contact Us</a></li>
   <li>
   <a class="nav-btn email-btn" href="mailto:info@hyper-wave.com">
     Email
@@ -111,16 +112,21 @@
   </table>
 </section>
 
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="careers.html">Careers</a>
-      <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd/about/">LinkedIn</a>
-    </div>
-    <p class="footer-note">© 2025 Hyperwave Systems Engineering. All rights reserved.</p>
-  </footer>
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="careers.html">Careers</a>
+    <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd/about/">LinkedIn</a>
+  </div>
+  <p class="footer-note">© <span id="copyright-year">2025</span> Hyperwave Systems Engineering. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+</script>
+
 
   <script src="script.js"></script>
 </body>

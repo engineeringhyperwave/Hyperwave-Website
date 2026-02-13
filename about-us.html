@@ -21,13 +21,13 @@
         <li><a href="products.html">Products</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="gpt.html">GPT</a></li>
+        <li><a href="csr.html">CSR</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
 
     <div class="nav-right">
-      <button class="search-btn" onclick="location.href='gpt.html'">🔍︎</button>
+      <button class="search-btn" onclick="location.href='about-us.html'">🔍︎</button>
       <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')">Email</button>
       <button class="nav-btn contact-btn" onclick="location.href='contact.html'">Contact Us</button>
   </div>
@@ -41,7 +41,8 @@
   <li><a href="projects.html">Projects</a></li>
   <li><a href="services.html">Services</a></li>
   <li><a href="careers.html">Careers</a></li>
-  <li><a href="gpt.html">GPT</a></li>
+  <li><a href="csr.html">CSR</a></li>
+  <li><a href="contact.html">Contact Us</a></li>
   <li>
   <a class="nav-btn email-btn" href="mailto:info@hyper-wave.com">
     Email
@@ -63,7 +64,7 @@
   </div>
 
   <div class="slogan-image">
-  <img src="img6.jpg" alt="slogan illustration">
+  <img src="img20.jpg" alt="slogan illustration">
 </div>
 
 
@@ -150,168 +151,137 @@
   </div>
 </section>
 
-<section class="timeline-section">
-  <h2>Our Milestones</h2>
-
-  <div class="timeline-controls">
-    <button class="timeline-btn left" onclick="scrollTimeline('left')">←</button>
-    <button class="timeline-btn right" onclick="scrollTimeline('right')">→</button>
-  </div>
-
-  <div class="timeline-container">
-    <div class="timeline-item">
-      <span class="year">2000</span>
-      <p>Established KK HQ Office</p>
-    </div>
-    <div class="timeline-item">
-      <span class="year">2001</span>
-      <p>Started Analyzer Business</p>
-    </div>
-    <div class="timeline-item">
-      <span class="year">2004</span>
-      <p>Established Paka Office & Fabrication Yard</p>
-    </div>
-    <div class="timeline-item">
-      <span class="year">2012</span>
-      <p>Diversified into Civil & E&I Projects</p>
-    </div>
-    <div class="timeline-item">
-      <span class="year">2015–2018</span>
-      <p>MLNG Workshop Expansion</p>
-    </div>
-    <div class="timeline-item">
-      <span class="year">2019–2021</span>
-      <p>EPCC for RESET and PCD (M) at MRCSB</p>
-    </div>
-    <div class="timeline-item">
-      <span class="year">2022–Now</span>
-      <p>Expansion of fabrication yards in Bintulu, Pengerang, Melaka & Terengganu</p>
-    </div>
-  </div>
-</section>
-
 <section class="awards-section">
-  <h2>Our Awards & Recognitions</h2>
-  <div class="awards-grid">
+  <h2 class="section-title">Our Awards & Recognitions</h2>
 
-    <div class="award-card">
-      <img src="award-img/ia1.png" alt="2023 Award">
-      <div class="award-info">
-        <h3>COMMEMORATION OF SABAH vendors' participation in OGSE Industry (2023) </h3>
-        <p>KOTA KINABALU,SABAH</p>
-      </div>
-    </div>
+  <div class="awards-scroller-section">
+    <button class="scroll-btn left" onclick="scrollAwards(-1)">←</button>
 
-    <div class="award-card">
-      <img src="award-img/ia2.png" alt="2022 Award">
-      <div class="award-info">
-        <h3>PETRONAS (2022) </h3>
-        <p>HSE 1 MILLION SAFE MAN HOUR WITHOUT LTI AWARD</p>
-      </div>
-    </div>
+    <div class="awards-scroller" id="awardsScroller">
 
-    <div class="award-card">
-      <img src="award-img/ia3.png" alt="2021 Award">
-      <div class="award-info">
-        <h3>MRCSB RESET Project WP42 (2021)</h3>
-        <p>ZERO HSE INCIDENT AWARD RECOGNITION/p>
+      <div class="award-card">
+        <img src="award-img/ia1.png" alt="2023 Award">
+        <div class="award-info">
+          <h3>COMMEMORATION OF SABAH vendors' participation in OGSE Industry (2023)</h3>
+          <p>KOTA KINABALU, SABAH</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia4.png" alt="2020 Award">
-      <div class="award-info">
-        <h3>SHELL (2020)</h3>
-        <p>OUTSTANDING SERVICE  SUPPORT AND EXCEPTIONAL SAFETY  PERFORMANCE IN ACHIEVING THE  STRETCHED TARGET FOR THE SARAWAK ASSET</p>
+      <div class="award-card">
+        <img src="award-img/ia2.png" alt="2022 Award">
+        <div class="award-info">
+          <h3>PETRONAS (2022)</h3>
+          <p>HSE 1 MILLION SAFE MAN HOUR WITHOUT LTI AWARD</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia5.png" alt="2019 Award">
-      <div class="award-info">
-        <h3>SABAH TOP ACHIEVER (2019)</h3>
-        <p>INDUSTRIAL EXCELLENCE IN  ENGINEERING & SERVICES</p>
+      <div class="award-card">
+        <img src="award-img/ia3.png" alt="2021 Award">
+        <div class="award-info">
+          <h3>MRCSB RESET Project WP42 (2021)</h3>
+          <p>ZERO HSE INCIDENT AWARD RECOGNITION</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia6.png" alt="2019 Award">
-      <div class="award-info">
-        <h3>Global Leadership Award (2019)</h3>
-        <p>Oil & Gas, Analytics & Instrumentation</p>
+      <div class="award-card">
+        <img src="award-img/ia4.png" alt="2020 Award">
+        <div class="award-info">
+          <h3>SHELL (2020)</h3>
+          <p>OUTSTANDING SERVICE SUPPORT AND EXCEPTIONAL SAFETY PERFORMANCE IN ACHIEVING THE STRETCHED TARGET FOR THE SARAWAK ASSET</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia7.png" alt="2019 Award">
-      <div class="award-info">
-        <h3>PCDM Turnaround Project (2019)</h3>
-        <p>FOCUSED RECOGNITION (RESULTS MATTER, OWN IT!, FOCUSED EXECUTION, SHARED SUCCESS)</p>
+      <div class="award-card">
+        <img src="award-img/ia5.png" alt="2019 Award">
+        <div class="award-info">
+          <h3>SABAH TOP ACHIEVER (2019)</h3>
+          <p>INDUSTRIAL EXCELLENCE IN ENGINEERING & SERVICES</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia8.png" alt="2018 Award">
-      <div class="award-info">
-        <h3>PCDM Turnaround Project (2018)</h3>
-        <p>FOCUSED RECOGNITION (RESULTS MATTER, OWN IT!, FOCUSED EXECUTION, SHARED SUCCESS)</p>
+      <div class="award-card">
+        <img src="award-img/ia6.png" alt="2019 Award">
+        <div class="award-info">
+          <h3>Global Leadership Award (2019)</h3>
+          <p>Oil & Gas, Analytics & Instrumentation</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia9.png" alt="2016 Award">
-      <div class="award-info">
-        <h3>MRCSB PSR 2 & MG3 TURNAROUND (2019)</h3>
-        <p>FOCUSED RECOGNITION (SAFE, TIMELY MANNER, FULL SUPPORT AND STRONG LEADERSHIP)</p>
+      <div class="award-card">
+        <img src="award-img/ia7.png" alt="2019 Award">
+        <div class="award-info">
+          <h3>PCDM Turnaround Project (2019)</h3>
+          <p>FOCUSED RECOGNITION (RESULTS MATTER, OWN IT!, FOCUSED EXECUTION, SHARED SUCCESS)</p>
+        </div>
       </div>
-    </div>
 
-    <div class="award-card">
-      <img src="award-img/ia10.png" alt="2014 Award">
-      <div class="award-info">
-        <h3>MARLIN Project (2014)</h3>
-        <p>2.5 Million Safe Manhours Without LTI</p>
+      <div class="award-card">
+        <img src="award-img/ia8.png" alt="2018 Award">
+        <div class="award-info">
+          <h3>PCDM Turnaround Project (2018)</h3>
+          <p>FOCUSED RECOGNITION (RESULTS MATTER, OWN IT!, FOCUSED EXECUTION, SHARED SUCCESS)</p>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+
+      <div class="award-card">
+        <img src="award-img/ia9.png" alt="2016 Award">
+        <div class="award-info">
+          <h3>MRCSB PSR 2 & MG3 TURNAROUND (2019)</h3>
+          <p>FOCUSED RECOGNITION (SAFE, TIMELY MANNER, FULL SUPPORT AND STRONG LEADERSHIP)</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <img src="award-img/ia10.png" alt="2014 Award">
+        <div class="award-info">
+          <h3>MARLIN Project (2014)</h3>
+          <p>2.5 Million Safe Manhours Without LTI</p>
+        </div>
+      </div>
+
+    </div> <!-- 关闭 awards-scroller -->
+
+    <button class="scroll-btn right" onclick="scrollAwards(1)">→</button>
+  </div> <!-- 关闭 awards-scroller-section -->
+
+</section> <!-- 关闭 awards-section -->
+
 
 <section class="licenses-section">
-  <h2>Company Licenses</h2>
-  <div class="licenses-grid">
+  <h2 class="section-title">Company Licenses</h2>
 
-    <div class="license-card">
-      <div class="license-images">
-        <img src="company-licienses/cl1.png" alt="License Front">
-        <img src="company-licienses/cl1.1.png" alt="License Back">
-      </div>
-      <div class="license-info">
-        <h3>ISO 9001:2015</h3>
-        <p>(2024 - 2027)</p>
-      </div>
-    </div>
+  <div class="licenses-scroller-section">
+    <button class="scroll-btn left" onclick="scrollLicenses(-1)">←</button>
 
-    <div class="license-card">
-      <div class="license-images">
-        <img src="company-licienses/cl2.png" alt="MOF Certificate">
+    <div class="licenses-scroller" id="licensesScroller">
+      <div class="license-card">
+        <div class="license-images">
+          <img src="company-licienses/cl1.png" alt="License Front">
+          <img src="company-licienses/cl1.1.png" alt="License Back">
+        </div>
+        <div class="license-info">
+          <h3>ISO 9001:2015</h3>
+        </div>
       </div>
-      <div class="license-info">
-        <h3>PETRONAS LICENSE</h3>
-        <p>(2024 - 2027)</p>
-      </div>
-    </div>
 
-       <div class="license-card">
-      <div class="license-images">
-        <img src="company-licienses/cl3.png" alt="License Front">
-        <img src="company-licienses/cl3.1.png" alt="License Back">
-        <img src="company-licienses/cl3.2.png" alt="License Back">
+      <div class="license-card">
+        <div class="license-images">
+          <img src="company-licienses/cl2.png" alt="MOF Certificate">
+        </div>
+        <div class="license-info">
+          <h3>PETRONAS LICENSE</h3>
+        </div>
       </div>
-      <div class="license-info">
-        <h3>CIDB MALAYSIA</h3>
-        <p>(2023-2025)</p>
+
+      <div class="license-card">
+        <div class="license-images">
+          <img src="company-licienses/cl3.png" alt="License Front">
+          <img src="company-licienses/cl3.1.png" alt="License Back">
+        </div>
+        <div class="license-info">
+          <h3>CIDB MALAYSIA</h3>
+        </div>
       </div>
-    </div>
 
         <div class="license-card">
       <div class="license-images">
@@ -319,7 +289,6 @@
       </div>
       <div class="license-info">
         <h3>MINISTER OF FINANCE CERTIFICATE</h3>
-        <p>(2023-2026)</p>
       </div>
     </div>
 
@@ -329,11 +298,11 @@
       </div>
       <div class="license-info">
         <h3>ENERGY COMMISSION OF MALAYSIA CERTIFICATE</h3>
-        <p>(2024-2025)</p>
       </div>
     </div>
 
     <!-- 更多双图卡牌 -->  
+     <button class="scroll-btn right" onclick="scrollLicenses(1)">→</button>
   </div>
 </section>
 
@@ -388,204 +357,21 @@
 
 
 
-
-<section class="policy-carousel">
-  <div class="carousel-controls">
-    <button id="prevBtn">←</button>
-    <h2 id="carousel-title">AML POLICY</h2>
-    <button id="nextBtn">→</button>
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="careers.html">Careers</a>
+    <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd/about/">LinkedIn</a>
   </div>
+  <p class="footer-note">© <span id="copyright-year">2025</span> Hyperwave Systems Engineering. All rights reserved.</p>
+</footer>
 
-  <div class="carousel-content">
-    <!-- Group 1 -->
-    <div class="policy-group active">
-      <img src="Policy/AML POLICY.png" alt="AML POLICY">
-    </div>
+<script>
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+</script>
 
-    <!-- Group 2 -->
-    <div class="policy-group">
-      <img src="Policy/ANTI BRIBERY AND ANTI CORRUPTION POLICY.png" alt="Bribery Policy">
-    </div>
-
-    <!-- Group 3 -->
-    <div class="policy-group">
-      <img src="Policy/DRUG AND ALCOHOL POLICY STATEMENT.png" alt="Drug Policy">
-    </div>
-
-    <!-- ✅ Group 4: EMPLOYEE POLICY AND HANDBOOK -->
-    <!-- ✅ Group 4: EMPLOYEE POLICY AND HANDBOOK -->
-<!-- ✅ Group 4: EMPLOYEE POLICY AND HANDBOOK -->
-<div class="policy-group">
-  <img src="ehandbook/employee (1).png" alt="Employee Page 1">
-  <img src="ehandbook/employee (2).png" alt="Employee Page 2">
-  <img src="ehandbook/employee (3).png" alt="Employee Page 3">
-  <img src="ehandbook/employee (4).png" alt="Employee Page 4">
-  <img src="ehandbook/employee (5).png" alt="Employee Page 5">
-  <img src="ehandbook/employee (6).png" alt="Employee Page 6">
-  <img src="ehandbook/employee (7).png" alt="Employee Page 7">
-  <img src="ehandbook/employee (8).png" alt="Employee Page 8">
-  <img src="ehandbook/employee (9).png" alt="Employee Page 9">
-  <img src="ehandbook/employee (10).png" alt="Employee Page 10">
-  <img src="ehandbook/employee (11).png" alt="Employee Page 11">
-  <img src="ehandbook/employee (12).png" alt="Employee Page 12">
-  <img src="ehandbook/employee (13).png" alt="Employee Page 13">
-  <img src="ehandbook/employee (14).png" alt="Employee Page 14">
-  <img src="ehandbook/employee (15).png" alt="Employee Page 15">
-  <img src="ehandbook/employee (16).png" alt="Employee Page 16">
-  <img src="ehandbook/employee (17).png" alt="Employee Page 17">
-  <img src="ehandbook/employee (18).png" alt="Employee Page 18">
-  <img src="ehandbook/employee (19).png" alt="Employee Page 19">
-  <img src="ehandbook/employee (20).png" alt="Employee Page 20">
-  <img src="ehandbook/employee (21).png" alt="Employee Page 21">
-  <img src="ehandbook/employee (22).png" alt="Employee Page 22">
-  <img src="ehandbook/employee (23).png" alt="Employee Page 23">
-  <img src="ehandbook/employee (24).png" alt="Employee Page 24">
-  <img src="ehandbook/employee (25).png" alt="Employee Page 25">
-  <img src="ehandbook/employee (26).png" alt="Employee Page 26">
-  <img src="ehandbook/employee (27).png" alt="Employee Page 27">
-  <img src="ehandbook/employee (28).png" alt="Employee Page 28">
-  <img src="ehandbook/employee (29).png" alt="Employee Page 29">
-  <img src="ehandbook/employee (30).png" alt="Employee Page 30">
-  <img src="ehandbook/employee (31).png" alt="Employee Page 31">
-  <img src="ehandbook/employee (32).png" alt="Employee Page 32">
-  <img src="ehandbook/employee (33).png" alt="Employee Page 33">
-  <img src="ehandbook/employee (34).png" alt="Employee Page 34">
-  <img src="ehandbook/employee (35).png" alt="Employee Page 35">
-  <img src="ehandbook/employee (36).png" alt="Employee Page 36">
-  <img src="ehandbook/employee (37).png" alt="Employee Page 37">
-  <img src="ehandbook/employee (38).png" alt="Employee Page 38">
-  <img src="ehandbook/employee (39).png" alt="Employee Page 39">
-  <img src="ehandbook/employee (40).png" alt="Employee Page 40">
-  <img src="ehandbook/employee (41).png" alt="Employee Page 41">
-  <img src="ehandbook/employee (42).png" alt="Employee Page 42">
-  <img src="ehandbook/employee (43).png" alt="Employee Page 43">
-  <img src="ehandbook/employee (44).png" alt="Employee Page 44">
-  <img src="ehandbook/employee (45).png" alt="Employee Page 45">
-  <img src="ehandbook/employee (46).png" alt="Employee Page 46">
-  <img src="ehandbook/employee (47).png" alt="Employee Page 47">
-  <img src="ehandbook/employee (48).png" alt="Employee Page 48">
-  <img src="ehandbook/employee (49).png" alt="Employee Page 49">
-  <img src="ehandbook/employee (50).png" alt="Employee Page 50">
-  <img src="ehandbook/employee (51).png" alt="Employee Page 51">
-  <img src="ehandbook/employee (52).png" alt="Employee Page 52">
-  <img src="ehandbook/employee (53).png" alt="Employee Page 53">
-  <img src="ehandbook/employee (54).png" alt="Employee Page 54">
-  <img src="ehandbook/employee (55).png" alt="Employee Page 55">
-  <img src="ehandbook/employee (56).png" alt="Employee Page 56">
-  <img src="ehandbook/employee (57).png" alt="Employee Page 57">
-  <img src="ehandbook/employee (58).png" alt="Employee Page 58">
-  <img src="ehandbook/employee (59).png" alt="Employee Page 59">
-  <img src="ehandbook/employee (60).png" alt="Employee Page 60">
-  <img src="ehandbook/employee (61).png" alt="Employee Page 61">
-  <img src="ehandbook/employee (62).png" alt="Employee Page 62">
-  <img src="ehandbook/employee (63).png" alt="Employee Page 63">
-  <img src="ehandbook/employee (64).png" alt="Employee Page 64">
-  <img src="ehandbook/employee (65).png" alt="Employee Page 65">
-</div>
-
-
-
-<!-- Group 5 -->
-<div class="policy-group">
-  <img src="Policy/ENVIRONMENTAL POLICY.png" alt="Environmental Policy">
-</div>
-
-<!-- Group 6 -->
-<div class="policy-group">
-  <img src="Policy/HOUSEKEEPING POLICY.png" alt="Housekeeping Policy">
-</div>
-
-<!-- Group 7 -->
-<div class="policy-group">
-  <img src="Policy/HUMAN RIGHTS COMMITMENT.png" alt="Human Rights Commitment">
-</div>
-
-<!-- Group 8 -->
-<div class="policy-group">
-  <img src="Policy/Memo Hotel And Flight Booking.png" alt="Memo: Hotel and Flight Booking">
-</div>
-
-<!-- Group 9 -->
-<div class="policy-group">
-  <img src="Policy/MEMO OT/memo (1).png" alt="Memo: OT and Rest Day/PH Calculation Page 1">
-  <img src="Policy/MEMO OT/memo (2).png" alt="Memo: OT and Rest Day/PH Calculation Page 2">
-  <img src="Policy/MEMO OT/memo (3).png" alt="Memo: OT and Rest Day/PH Calculation Page 3">
-  <img src="Policy/MEMO OT/memo (4).png" alt="Memo: OT and Rest Day/PH Calculation Page 4">
-</div>
-<!-- Group 10 -->
-<div class="policy-group">
-  <img src="Policy/Memo Reminder About The Carry Forward Leave Policy-1.png" alt="Memo: Carry Forward Leave Reminder">
-</div>
-
-<!-- Group 11 -->
-<div class="policy-group">
-  <img src="Policy/Memo Reminder Infotech for Attendance and Leave.png" alt="Memo: Infotech Attendance and Leave">
-</div>
-
-<!-- Group 12 -->
-<div class="policy-group">
-  <img src="Policy/MEMO REPLACEMENT/memo replacement (1).png" alt="Memo: Replacement Leave Procedure Page 1">
-  <img src="Policy/MEMO REPLACEMENT/memo replacement (2).png" alt="Memo: Replacement Leave Procedure Page 2">
-  <img src="Policy/MEMO REPLACEMENT/memo replacement (3).png" alt="Memo: Replacement Leave Procedure Page 3">
-  <img src="Policy/MEMO REPLACEMENT/memo replacement (4).png" alt="Memo: Replacement Leave Procedure Page 4">
-</div>
-
-
-<!-- Group 13 -->
-<div class="policy-group">
-  <img src="Policy/Memo Switch Off Lights And ACs Before Leave Office.png" alt="Memo: Switch Off Lights and ACs">
-</div>
-
-<!-- Group 14 -->
-<div class="policy-group">
-  <img src="Policy/NO SMOKING POLICY.png" alt="No Smoking Policy">
-</div>
-
-<!-- Group 15 -->
-<div class="policy-group">
-  <img src="Policy/OSHE POLICY.png" alt="Occupational Safety, Health and Environment (OSHE) Policy">
-</div>
-
-<!-- Group 16 -->
-<div class="policy-group">
-  <img src="Policy/PPE POLICY.png" alt="Personal Protective Equipment (PPE) Policy">
-</div>
-
-<!-- Group 17 -->
-<div class="policy-group">
-  <img src="Policy/QUALITY POLICY.png" alt="Quality Policy">
-</div>
-
-<!-- Group 18 -->
-<div class="policy-group">
-  <img src="Policy/SEXUAL HARASSMENT POLICY.png" alt="Sexual Harassment Policy">
-</div>
-
-<!-- Group 19 -->
-<div class="policy-group">
-  <img src="Policy/STOP WORK POLICY.png" alt="Stop Work Policy">
-</div>
-
-<!-- Group 20 -->
-<div class="policy-group">
-  <img src="Policy/TRAINING POLICY.png" alt="Training Policy">
-</div>
-
-
-</section>
-
-
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="careers.html">Careers</a>
-      <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd/about/">LinkedIn</a>
-    </div>
-    <p class="footer-note">© 2025 Hyperwave Systems Engineering. All rights reserved.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
