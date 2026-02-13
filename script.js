@@ -267,3 +267,24 @@ window.scrollBrands = function (direction) {
   });
 };
 
+function scrollAwards(direction) {
+  const scroller = document.getElementById('awardsScroller');
+  const scrollAmount = 300; // 每次滚动300px，可调节
+  scroller.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+const licenseScroller = document.querySelector('.licenses-scroller');
+const licenseLeftBtn = document.querySelector('.licenses-section .scroll-btn.left');
+const licenseRightBtn = document.querySelector('.licenses-section .scroll-btn.right');
+
+licenseLeftBtn.addEventListener('click', () => {
+  licenseScroller.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+licenseRightBtn.addEventListener('click', () => {
+  licenseScroller.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
