@@ -453,53 +453,70 @@ html, body {
 
 /* Awards */
 .awards-section {
+  position: relative;
   padding: 60px 20px;
   background-color: #fff;
   text-align: center;
 }
 
-.awards-section h2 {
-  font-size: 2.8em;
-  color: #ff6200;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-}
-
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  justify-content: center;
-}
-
-.award-card {
+/* 滚动容器 */
+.awards-scroller {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 让图片和文字平均分布 */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 60px; /* 给左右按钮留空间 */
+  scrollbar-width: none;
+}
+
+.awards-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+/* 固定大小卡片 */
+.award-card {
+  flex: 0 0 300px;             /* 固定宽度 */
+  height: 700px;               /* 固定卡片高度，确保每个卡片的高度一致 */
   background-color: #f9f9f9;
-  border: 2px solid #ff6200;
+  border: 2px solid #ff6200;   /* 橘色边框 */
   border-radius: 10px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;      /* 纵向布局 */
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  height: 100%; /* 保证卡片高度一致 */
+  overflow: hidden;            /* 防止内容溢出 */
 }
 
 .award-card:hover {
   transform: translateY(-5px);
 }
 
-.award-card img {
-  width: 100%;
-  height: auto;
-  display: block;
+/* 图片区域，固定高度 */
+.award-images {
+  height: 45%;                 /* 图片区域占卡片高度的 45% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
+.award-images img {
+  max-height: 100%;            /* 图片的最大高度等于区域高度 */
+  width: auto;                 /* 图片宽度保持比例 */
+  object-fit: contain;         /* 保持图片比例 */
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* 文字信息区域，剩余空间 */
 .award-info {
+  flex-grow: 1;                /* 文字区域占据剩余空间 */
   padding: 20px;
-  margin-top: auto; /* 把文字推到底部 */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* 让文字垂直居中 */
 }
-
 
 .award-info h3 {
   font-size: 1.2em;
@@ -512,37 +529,80 @@ html, body {
   color: #333;
 }
 
+
+
+
+
+/* 按钮 */
+.awards-section .scroll-btn {
+  position: absolute;
+  top: 55%;  /* 下移一点 */
+  transform: translateY(-50%);
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.awards-section .scroll-btn.left {
+  left: 15px;
+}
+
+.awards-section .scroll-btn.right {
+  right: 15px;
+}
+
+.awards-section .scroll-btn:hover {
+  background-color: #e05500;
+}
+
+
+
+
+
+/* Licenses */
+
 .licenses-section {
+  position: relative;
   padding: 60px 20px;
   background-color: #fff;
   text-align: center;
 }
 
-.licenses-section h2 {
-  font-size: 2.5em;
-  color: #ff6200;
-  margin-bottom: 40px;
-  text-transform: uppercase;
+/* 滚动容器 */
+.licenses-scroller {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 60px; /* 给左右按钮留空间 */
+  scrollbar-width: none; /* Firefox 隐藏滚动条 */
 }
 
-.licenses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  justify-content: center;
+.licenses-scroller::-webkit-scrollbar {
+  display: none; /* Chrome 隐藏滚动条 */
 }
 
+/* 卡片保持一致大小 */
 .license-card {
+  flex: 0 0 auto;
+  width: 300px;
   background-color: #f9f9f9;
   border: 2px solid #ff6200;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 400px;
 }
 
 .license-card:hover {
@@ -564,7 +624,6 @@ html, body {
 
 .license-info {
   padding: 20px;
-  margin-top: auto;
   text-align: center;
 }
 
@@ -578,6 +637,41 @@ html, body {
   font-size: 1em;
   color: #333;
 }
+
+/* 滚动按钮 */
+.licenses-section .scroll-btn {
+  position: absolute;
+  top: 62.5%;  /* ✅ 原来 50%，改成 55% 下移一点 */
+  transform: translateY(-50%);
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.licenses-section .scroll-btn.left {
+  left: 15px;
+}
+
+.licenses-section .scroll-btn.right {
+  right: 15px;
+}
+
+.licenses-section .scroll-btn:hover {
+  background-color: #e05500;
+}
+
+
 
 /* Esteemed-Customers */
 
@@ -803,7 +897,7 @@ html, body {
   font-size: 18px;
   color: #333;
   margin-bottom: 10px;
-  padding-left: 20px;
+  padding-left: 12em;
   position: relative;
 }
 
@@ -1204,6 +1298,13 @@ button {
   border-radius: 4px;
 }
 
+.policy-list li {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  padding-left: 2em;
+  position: relative;
+}
 
 /* Ipad */
 
@@ -1334,6 +1435,15 @@ button {
   .feature-box:hover {
     transform: translateY(-5px);
   }
+
+  .policy-list li {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  padding-left: 5em;
+  position: relative;
+}
+
 }
 }
 
