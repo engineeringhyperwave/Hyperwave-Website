@@ -256,35 +256,31 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 }); // ← 这一行是 DOMContentLoaded 的正确结束！到这里就结束了！
 
 // ====================== 下面这整段必须写在外面！======================
-window.scrollBrands = function (direction) {
-  const scroller = document.getElementById('brandScroller');
-  if (!scroller) return;
-
-  const scrollAmount = 320; // 你可以自己调
-  scroller.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-};
-
+// Awards 滚动
 function scrollAwards(direction) {
   const scroller = document.getElementById('awardsScroller');
-  const scrollAmount = 300; // 每次滚动300px，可调节
-  scroller.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
+  if (scroller) {
+    const scrollAmount = scroller.clientWidth;
+    scroller.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
 }
 
-const licenseScroller = document.querySelector('.licenses-scroller');
-const licenseLeftBtn = document.querySelector('.licenses-section .scroll-btn.left');
-const licenseRightBtn = document.querySelector('.licenses-section .scroll-btn.right');
+// Licenses 滚动
+function scrollLicenses(direction) {
+  const scroller = document.getElementById('licensesScroller');
+  if (scroller) {
+    const scrollAmount = scroller.clientWidth;
+    scroller.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+}
 
-licenseLeftBtn.addEventListener('click', () => {
-  licenseScroller.scrollBy({ left: -300, behavior: 'smooth' });
-});
+// Brands 滚动
+window.scrollBrands = function (direction) {
+  const scroller = document.getElementById('brandScroller');
+  if (scroller) {
+    const scrollAmount = 320;
+    scroller.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+};
 
-licenseRightBtn.addEventListener('click', () => {
-  licenseScroller.scrollBy({ left: 300, behavior: 'smooth' });
-});
 
