@@ -196,6 +196,10 @@ html, body {
   border-radius: 4px;
 }
 
+.portfolio-item {
+  visibility: hidden !important; /* 内容不可见，但保持空间 */
+}
+
 /* 响应式支持 */
 @media (max-width: 768px) {
   .carousel img {
