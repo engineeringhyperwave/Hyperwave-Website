@@ -219,6 +219,7 @@ html, body {
 
 .mission-image {
   flex: 1;
+  display: none;
 }
 
 .mission-image img {
@@ -229,13 +230,24 @@ html, body {
 
 .mission-content {
   flex: 2;
+  text-align: left;
+  max-width: 800px;   /* ✅ 限制文字区块宽度 */
+  margin: 0 auto;     /* ✅ 居中显示 */
 }
 
+
 .mission-content h2 {
-  font-size: 2.5em;
+  font-size: 2.8em;
   margin-bottom: 30px;
   color: #ff6200;
+  display: inline-block;      /* 下划线长度跟文字一致 */
+  position: relative;         /* ::after 定位基准 */
+  text-align: center;         /* 仅标题居中显示 */
+  width: 100%;                /* 保证标题在 flex 中居中 */
 }
+
+/* 给 Our Mission 的短下划线 */
+.mission-content h2::after { content: ""; display: block; width: 90px; /* 下划线长度，可调整 */ height: 4px; /* 下划线粗细 */ background: #ff6200; margin: 10px auto 0; /* 居中并与文字间隔 */ border-radius: 2px; /* 圆角更美观 */ }
 
 .mission-content p {
   font-size: 16px;
@@ -255,7 +267,7 @@ html, body {
   margin: 0 4px;
 }
 
-/* Counter */
+/* achievement */
 /* 成就区块整体背景 */
 .achievements-section {
   background-color: #f9f9f9; /* 柔和浅灰背景 */
@@ -271,6 +283,8 @@ html, body {
   font-weight: 700;
   letter-spacing: 1px;
 }
+
+.achievements-section h2::after { content: ''; display: block; width: 80px; height: 4px; background-color: #ff6200; margin: 10px auto 0; border-radius: 2px; }
 
 /* 每个成就卡片 */
 .achievement {
@@ -354,7 +368,7 @@ html, body {
 .vision-section {
   padding: 60px 20px;
   background-color: #f8f9fa;
-  text-align: center;
+  text-align: center; /* ✅ 保持标题居中 */
 }
 
 .vision-content h2 {
@@ -363,12 +377,23 @@ html, body {
   color: #ff6200;
 }
 
+.vision-content h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #ff6200;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
 .vision-content p {
   font-size: 1.1em;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
   color: #555;
+  text-align: center;   /* ✅ 段落文字左对齐 */
 }
 
 /* Timeline */
@@ -515,7 +540,7 @@ html, body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;     /* 让文字垂直居中 */
+  justify-content: flex-end;  /* 改这里，让文字靠底部 */
 }
 
 .award-info h3 {
@@ -603,6 +628,8 @@ html, body {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .license-card:hover {
@@ -625,6 +652,7 @@ html, body {
 .license-info {
   padding: 20px;
   text-align: center;
+  margin-top: auto;
 }
 
 .license-info h3 {
@@ -747,24 +775,50 @@ html, body {
   margin-bottom: 30px;
 }
 
-/* Partner Logos Section */
-.products-logos-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+.partner-logos-section {
   padding: 40px 20px;
   background-color: #ffffff;
+  overflow-x: auto;
 }
 
-.logo-image img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
+.partner-logos-section a {
   display: block;
+  text-decoration: none;
+  cursor: pointer;
+  min-width: 800px;
   margin: 0 auto;
 }
+
+.partner-logos-section .brand-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partner-logos-section .brand-card {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.partner-logos-section .brand-card img {
+  height: 100px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.partner-logos-section .brand-card span {
+  display: none;
+}
+
 
 /* Organisation Chart */
 .corporate-structure {
@@ -1528,3 +1582,11 @@ button {
     background-color: #ea5a00;
   }
 }
+
+/* 全站移动端菜单统一字体和右对齐（加在最底部即可覆盖之前设置） */
+.mobile-menu a,
+.mobile-menu .nav-btn {
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif; /* 稳重字体 */
+  font-weight: 600;  /* 稍微加粗，让文字有力量感 */
+}
+

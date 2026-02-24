@@ -431,20 +431,48 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* 合作伙伴 Logo */
 .partner-logos-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 40px 20px;
   background-color: #ffffff;
+  overflow-x: auto;
 }
 
-.logo-image img {
+.partner-logos-section a {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+.partner-logos-section .brand-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partner-logos-section .brand-card {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.partner-logos-section .brand-card img {
+  height: 100px;
+  width: auto;
   max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  object-fit: contain;
+  display: block;
+}
+
+.partner-logos-section .brand-card span {
+  display: none;
 }
 
 /* Footer */
@@ -883,4 +911,14 @@ html, body {
   .feature-box:hover {
     transform: translateY(-5px);
   }
+}
+
+.feature-box {
+  height: auto !important;       /* 自动高度，覆盖原来的 475px 或 350px */
+  min-height: 480px;             /* 保证最小高度 */
+}
+
+.feature-box .overlay {
+  max-height: none !important;   /* 不限制高度 */
+  overflow: visible !important;  /* 不裁剪文字 */
 }
