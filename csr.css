@@ -298,7 +298,7 @@ html, body {
     .csr-gallery {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
-
+  
 
   .main-nav,
   .nav-right {
@@ -466,7 +466,7 @@ html, body {
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1025px) {
   .main-nav,
   .nav-right {
     display: none;
