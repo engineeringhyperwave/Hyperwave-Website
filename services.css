@@ -399,7 +399,7 @@ html, body {
   }
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 1400px) {
   .main-nav,
   .nav-right {
     display: none;
