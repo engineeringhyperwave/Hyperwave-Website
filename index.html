@@ -1,389 +1,111 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hyperwave Systems Engineering Sdn Bhd</title>
-  <link rel="icon" type="image/x-icon" href="h.ico">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HypveGPT</title>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="icon" href="static/Untitled-3.ico" type="image/x-icon">
+
+
+  <!-- 必须的库 -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+  <!-- 代码高亮主题（Code Block Theme） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      hljs.highlightAll();
+    });
+  </script>
 </head>
+
 <body>
   <header class="header">
-  <div class="nav-container">
-    <a href="index.html"><img src="logo1.png" alt="公司标志" class="logo" style="cursor: pointer;"></a>
-    <button class="hamburger-btn">≡</button>
-    
-    <!-- 桌面导航（仅桌面显示） -->
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="csr.html">CSR</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
+    <div class="left-header">
+      <button class="icon-button" title="Sidebar">
+        <img src="static/sidebar.svg" alt="Sidebar Icon" />
+      </button>
+      <button class="icon-button" title="New Chat" onclick="resetChat()">
+        <img src="static/newchat.svg" alt="New Chat Icon" />
+      </button>
+    </div>
+    <div class="right-header">
+      <button class="sign-in">Sign in</button>
+      <button class="sign-up">Sign up</button>
 
-    <div class="nav-right">
-      <button class="search-btn" onclick="location.href='about-us.html'">🔍︎</button>
-      <button class="nav-btn email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@hyper-wave.com', '_blank')">Email</button>
-      <button class="nav-btn contact-btn" onclick="location.href='contact.html'">Contact Us</button>
-  </div>
-</header>
+      <button class="icon-button settings-button" title="Settings" onclick="logout()" style="display: none;">
+        <img src="static/settings.svg" alt="Settings Icon" class="settings-icon" />
+      </button>
+    </div>
+  </header>
 
-<!-- 移动菜单（仅移动端显示） -->
-<ul id="mobileMenu" class="mobile-menu">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="about-us.html">About Us</a></li>
-  <li><a href="products.html">Products</a></li>
-  <li><a href="services.html">Services</a></li>
-  <li><a href="projects.html">Projects</a></li>
-  <li><a href="careers.html">Careers</a></li>
-  <li><a href="csr.html">CSR</a></li>
-  <li><a href="contact.html">Contact Us</a></li>
-  <li>
-  <a class="nav-btn email-btn" href="mailto:info@hyper-wave.com">
-    Email
-  </a>
-</li>
-  <li><button class="nav-btn contact-btn" onclick="location.href='contact.html'">Contact Us</button></li>
-</ul>
-
-<div class="video-container">
-  <video id="mainVideo" autoplay muted loop playsinline aria-hidden="true">
-    <source src="2.mp4" type="video/mp4">
-  </video>
-</div>
-
-  <h2 class="section-title">Our Products</h2>
-
-  <div class="brand-scroller-section">
-  <button class="scroll-btn left" onclick="scrollBrands(-1)">←</button>
-  <div class="brand-scroller" id="brandScroller">
-    <div class="brand-card">
-      <a href="https://www.ametekpi.com" target="_blank">
-        <img src="Principal logos/AMETEK.png" alt="Ametek Logo">
-        <span>Ametek</span>
-      </a>
+  <!-- Sidebar 区块 -->
+  <div id="sidebar" class="sidebar hidden">
+    <div class="sidebar-header">
+      <button class="icon-button" id="toggleSidebar" title="Sidebar">
+        <img src="static/sidebar.svg" alt="Sidebar Icon" />
+      </button>
+      <button class="icon-button" title="New Chat" onclick="resetChat()">
+        <img src="static/newchat.svg" alt="New Chat Icon" />
+      </button>
+       <span class="header-title">Secret Ai-Studio</span>     
     </div>
-    <div class="brand-card">
-      <a href="https://www.emerson.com/en-us/automation/asco" target="_blank">
-        <img src="Principal logos/ASCO.png" alt="Emerson ASCO Logo">
-        <span>Emerson ASCO</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://geniefilters.com" target="_blank">
-        <img src="Principal logos/A+ GENIE.png" alt="A+ Genie Filters Logo">
-        <span>A+ Genie Filters</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.indsci.com/en" target="_blank">
-        <img src="Principal logos/ISC.png" alt="Industrial Scientific Logo">
-        <span>Industrial Scientific</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.autocontrol.it" target="_blank">
-        <img src="Principal logos/AUTOCONTROL.png" alt="Autocontrol Logo">
-        <span>Autocontrol</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.lumexinstruments.com" target="_blank">
-        <img src="Principal logos/LUMEX.png" alt="Lumex Logo">
-        <span>Lumex</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.iconscientific.com/analysers" target="_blank">
-        <img src="Principal logos/ICON.png" alt="Icon Logo">
-        <span>Icon</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://neomonitors.com" target="_blank">
-        <img src="Principal logos/NEO MONITORS1.png" alt="Neo Monitor Logo">
-        <span>NEO Monitors</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.obcorp.com" target="_blank">
-        <img src="Principal logos/OBRIEN.png" alt="Obrien Logo">
-        <span>Obrien</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.barbenanalytical.com" target="_blank">
-        <img src="Principal logos/BARBEN.png" alt="Barben Logo">
-        <span>Barben</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://envea.global" target="_blank">
-        <img src="Principal logos/ENVEA.png" alt="Envea Logo">
-        <span>Envea</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.airdimensions.com" target="_blank">
-        <img src="Principal logos/ADI PUMP.png" alt="ADI Pumps Logo">
-        <span>Air Dimensions</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.universalanalyzers.com" target="_blank">
-        <img src="Principal logos/UNIVERSAL ANALYZER.png" alt="Universal Analyzer Logo">
-        <span>Universal Analyzers</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.airliquide.com" target="_blank">
-        <img src="Principal logos/AIR LIQUIDE1.png" alt="Air Liquide Logo">
-        <span>Air Liquide</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.hamiltoncompany.com" target="_blank">
-        <img src="Principal logos/HAMILTON.png" alt="Hamilton Logo">
-        <span>Hamilton</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://refexsensors.com" target="_blank">
-        <img src="Principal logos/REFEX.png" alt="Refex RSL Logo">
-        <span>Refex RSL</span>
-      </a>
-    </div>
-    <div class="brand-card">
-      <a href="https://www.process-insights.com/products-3/products-industrial" target="_blank">
-        <img src="Principal logos/PROCESS INSIGHT.png" alt="Process Insight Logo">
-        <span>Process Insight</span>
-      </a>
-    </div>
-        <div class="brand-card">
-      <a href="https://www.brktechnologies.cz/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/BRK.png" alt="BRK Technologies Logo">
-        <span>BRK TECHNOLOGIES</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://inov8s.com/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/INOV 8.png" alt="INOV-8 Logo">
-        <span>INOV-8</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://sso2.com/en/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/SOUTHLAND SENSING.png" alt="Southland Sensing Logo">
-        <span>SOUTHLAND</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://www.phymetrix.com/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/PHYMETRIX.png" alt="Phymetrix Logo">
-        <span>PHYMETRIX</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://www.xos.com/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/XOS.png" alt="XOS Logo">
-        <span>XOS</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://ecdi.com/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/ECD.png" alt="ECD US Logo">
-        <span>ECD US</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://uniphos-envirotronic.com/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/UNIPHOS.png" alt="Uniphos India Logo">
-        <span>UNIPHOS</span>
-      </a>
-    </div>
-
-    <div class="brand-card">
-      <a href="https://www.qmicro.com/" target="_blank" rel="noopener noreferrer">
-        <img src="Principal logos/MICRO.png" alt="QMICRO Logo">
-        <span>QMICRO</span>
-      </a>
-    </div>
-  </div>
-  <button class="scroll-btn right" onclick="scrollBrands(1)">→</button>
-</div>
-
-
-
-  <div class="slogan-container">
-    <h1 class="slogan-text">Together, Powering a Brighter Future.</h1>
-    <p class="slogan-subtext">As a leading provider of professional engineering services, we specialize in delivering advanced solutions for the oil, gas, and petrochemical industries.</p>
-    <p class="slogan-subtext">Engineering excellence for a more sustainable world.</p>
+    <h2 class="sidebar-title">Chat History</h2>
+    <ul id="chatList" class="chat-list"></ul>
   </div>
 
-  <div class="feature-grid">
-    <div class="feature-box environment">
-      <div class="overlay">
-        <h3>ABOUT US</h3>
-        <p>We are one of the leading companies in professional engineering services and metering and industrial process analysis systems products.</p>
+  <main class="wrapper">
+    <h1 id="title">Secret Ai-Studio</h1>
+    <div id="chat"></div>
+    <div class="input-container" id="inputContainer">
+      <textarea id="input" placeholder="Ask HypveGPT..."></textarea>
+      <button class="send-icon" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+          <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+        </svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- 登录模态框 -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeLoginModal()">×</span>
+      <h2>Log in or Sign up</h2>
+
+      <div class="login-buttons">
+        <button class="login-provider google">Continue with Google</button>
+        <button class="login-provider github">Continue with GitHub</button>
       </div>
-    </div>
-    <div class="feature-box what-we-do">
-      <div class="overlay">
-        <h3>WHAT WE DO</h3>
-        <p>We specialize in providing professional engineering services and integrated solutions for the oil, gas, and petrochemical industries.</p>
+
+      <div class="divider">
+        <span>or</span>
       </div>
-    </div>
-    <div class="feature-box careers">
-      <div class="overlay">
-        <h3>CAREERS</h3>
-        <p>Be part of a close-knit, supportive team that values safety, integrity, and shared success.</p>
-      </div>
-    </div>
-    <div class="feature-box investors">
-      <div class="overlay">
-        <h3>PROJECTS</h3>
-        <p>Project & Supply Reference for Analyzers, Instruments & Sampling Conditioning Systems</p>
-      </div>
+
+      <input type="email" id="loginEmail" placeholder="Enter your email" />
+      <button class="continue-button" onclick="handleLogin()">Continue</button>
     </div>
   </div>
 
-<div class="slogan-extension">
-  <h2 class="slogan-highlight">Explore Our Expertise</h2>
-</div>
-
-<div class="image-grid">
-  <a href="services.html#maintenance-services">
-    <div class="image-card" style="background-image: url('img1.jpg');">
-      <div class="overlay-text"><h3>Maintenance Services</h3></div>
+  <!-- 删除聊天确认弹窗 -->
+<div id="deleteConfirmModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeDeleteModal()">×</span>
+    <h2>Delete Chat?</h2>
+    <p class="delete-warning">
+      Once you delete a conversation, the messages are gone forever on every device.
+    </p>
+    <div class="delete-buttons-vertical">
+      <button class="delete-btn" onclick="confirmDelete()">Delete chat</button>
+      <button class="cancel-btn" onclick="closeDeleteModal()">Cancel</button>
     </div>
-  </a>
-  <a href="services.html#calibration-services">
-    <div class="image-card" style="background-image: url('img2.jpg');">
-      <div class="overlay-text"><h3>Calibration Services</h3></div>
-    </div>
-  </a>
-  <a href="services.html#metering-services">
-    <div class="image-card" style="background-image: url('img3.jpg');">
-      <div class="overlay-text"><h3>Metering Services</h3></div>
-    </div>
-  </a>
-  <a href="services.html#after-sales-services">
-    <div class="image-card" style="background-image: url('img4.jpg');">
-      <div class="overlay-text"><h3>After-Sales Services</h3></div>
-    </div>
-  </a>
-  <a href="services.html#training-programs">
-    <div class="image-card" style="background-image: url('img5.jpg');">
-      <div class="overlay-text"><h3>Training Programs</h3></div>
-    </div>
-  </a>
-  <a href="services.html#engineering-consultation">
-    <div class="image-card" style="background-image: url('img6.jpg');">
-      <div class="overlay-text"><h3>Engineering & Consultation</h3></div>
-    </div>
-  </a>
-  <a href="services.html#plant-rejuvenation">
-    <div class="image-card" style="background-image: url('img7.jpeg');">
-      <div class="overlay-text"><h3>Plant Rejuvenation</h3></div>
-    </div>
-  </a>
-  <a href="services.html#turnaround-services">
-    <div class="image-card" style="background-image: url('img8.jpg');">
-      <div class="overlay-text"><h3>Turnaround Services</h3></div>
-    </div>
-  </a>
-  <a href="services.html#epcc-pcc-projects">
-    <div class="image-card" style="background-image: url('img9.jpg');">
-      <div class="overlay-text"><h3>EPCC & PCC Projects</h3></div>
-    </div>
-  </a>
-  <a href="services.html#fire-gas-detection">
-    <div class="image-card" style="background-image: url('img10.jpg');">
-      <div class="overlay-text"><h3>Fire & Gas Detection Systems</h3></div>
-    </div>
-  </a>
-  <a href="services.html#sampling-system-design">
-    <div class="image-card" style="background-image: url('img11.jpg');">
-      <div class="overlay-text"><h3>Sampling System Design</h3></div>
-    </div>
-  </a>
-  <a href="services.html#analyzer-services">
-    <div class="image-card" style="background-image: url('img12.png');">
-      <div class="overlay-text"><h3>Analyzer Services</h3></div>
-    </div>
-  </a>
-</div>
-
-
-
-
-  <div class="slogan-extension">
-    <h2 class="slogan-highlight">Brand We Represent</h2>
-    <p class="slogan-subtext">HYPERWAVE expanded its capabilities and became one of the country's leading multi-discipline EPCC (Engineering, Procurement, Construction, and Commissioning) contractors, delivering Mechanical & Piping, Instrumentation & Control, Civil & Structural, and Electrical services.</p>
   </div>
-
-<div class="partner-logos-section">
-  <a href="products.html">
-    <div class="brand-grid">
-      <div class="brand-card"><img src="Principal logos/AMETEK.png" alt="Ametek"><span>Ametek</span></div>
-      <div class="brand-card"><img src="Principal logos/ASCO.png" alt="ASCO"><span>Emerson ASCO</span></div>
-      <div class="brand-card"><img src="Principal logos/A+ GENIE.png" alt="Genie"><span>A+ Genie Filters</span></div>
-      <div class="brand-card"><img src="Principal logos/ISC.png" alt="ISC"><span>Industrial Scientific</span></div>
-      <div class="brand-card"><img src="Principal logos/DELTA C.png" alt="Delta C"><span>Delta C</span></div>
-      <div class="brand-card"><img src="Principal logos/LUMEX.png" alt="Lumex"><span>Lumex</span></div>
-      <div class="brand-card"><img src="Principal logos/ICON.png" alt="Icon"><span>Icon</span></div>
-      <div class="brand-card"><img src="Principal logos/NEO MONITORS1.png" alt="Neo"><span>Neo Monitor</span></div>
-      <div class="brand-card"><img src="Principal logos/OBRIEN.png" alt="Obrien"><span>Obrien</span></div>
-      <div class="brand-card"><img src="Principal logos/BARBEN.png" alt="Barben"><span>Barben</span></div>
-      <div class="brand-card"><img src="Principal logos/ENVEA.png" alt="Envea"><span>Envea</span></div>
-      <div class="brand-card"><img src="Principal logos/ADI PUMP.png" alt="ADI"><span>Air Dimensions</span></div>
-      <div class="brand-card"><img src="Principal logos/UNIVERSAL ANALYZER.png" alt="Universal"><span>Universal Analyzers</span></div>
-      <div class="brand-card"><img src="Principal logos/AUTOCONTROL.png" alt="Autocontrol"><span>Autocontrol</span></div>
-      <div class="brand-card"><img src="Principal logos/AIR LIQUIDE1.png" alt="Air Liquide"><span>Air Liquide</span></div>
-      <div class="brand-card"><img src="Principal logos/HAMILTON.png" alt="Hamilton"><span>Hamilton</span></div>
-      <div class="brand-card"><img src="Principal logos/REFEX.png" alt="Refex"><span>Refex RSL</span></div>
-      <div class="brand-card"><img src="Principal logos/PROCESS INSIGHT.png" alt="Process Insight"><span>Process Insight</span></div>
-      <div class="brand-card"><img src="Principal logos/BRK.png" alt="BRK"><span>BRK TECHNOLOGIES S.R.O</span></div>
-      <div class="brand-card"><img src="Principal logos/INOV 8.png" alt="INOV-8"><span>INOV-8</span></div>
-      <div class="brand-card"><img src="Principal logos/SOUTHLAND SENSING.png" alt="Southland"><span>SOUTHLAND</span></div>
-      <div class="brand-card"><img src="Principal logos/PHYMETRIX.png" alt="Phymetrix"><span>PHYMETRIX</span></div>
-      <div class="brand-card"><img src="Principal logos/XOS.png" alt="XOS"><span>XOS</span></div>
-      <div class="brand-card"><img src="Principal logos/ECD.png" alt="ECD"><span>ECD US</span></div>
-      <div class="brand-card"><img src="Principal logos/UNIPHOS.png" alt="Uniphos"><span>UNIPHOS</span></div>
-      <div class="brand-card"><img src="Principal logos/MICRO.png" alt="Qmicro"><span>QMICRO</span></div>
-    </div>
-  </a>
 </div>
 
-
-<footer class="site-footer">
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Use</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="careers.html">Careers</a>
-    <a href="https://www.linkedin.com/company/hyperwave-systems-engineering-sdn-bhd/about/">LinkedIn</a>
-  </div>
-  <p class="footer-note">© <span id="copyright-year">2025</span> Hyperwave Systems Engineering. All rights reserved.</p>
-</footer>
-
-<script>
-  document.getElementById('copyright-year').textContent = new Date().getFullYear();
-</script>
-
-
-  <script src="script.js"></script>
+  <!-- 你的 JS（加版本号防缓存） -->
+  <script src="static/script.js?v=20251114"></script>
 </body>
 </html>
