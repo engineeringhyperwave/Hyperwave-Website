@@ -49,6 +49,70 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.toggle('visible');
     });
 
+    /* ============================================================
+   🚀 精准适配补丁：只针对 1025px-1400px 区间（老板的笔记本）
+   1400px 以上完全保持原样，不影响大屏。
+   ============================================================ */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    /* ✨ 核心逻辑：只在老板笔记本的尺寸区间生效 */
+    @media screen and (min-width: 1025px) and (max-width: 1400px) {
+      
+      /* 1. 强行把被 CSS 隐藏的导航栏拉回来 */
+      .main-nav, .nav-right { 
+          display: flex !important; 
+      }
+      .hamburger-btn, .mobile-menu { 
+          display: none !important; 
+      }
+
+      /* 2. 容器适配：确保不换行，左右撑满 */
+      .nav-container {
+          display: flex !important;
+          flex-wrap: nowrap !important;
+          justify-content: space-between !important;
+          width: 100% !important;
+          gap: 10px !important;
+      }
+
+      /* 3. 重点：把原本 45px 的死间距缩小到 18px，给右边按钮腾位置 */
+      .main-nav ul {
+          display: flex !important;
+          padding: 0 !important;
+          margin: 0 !important;
+      }
+      .main-nav ul li:not(:first-child) {
+          margin-left: 18px !important; /* 强制缩小间距，防止挤出屏幕 */
+      }
+      .main-nav ul li a {
+          white-space: nowrap !important;
+          font-size: 15px !important; /* 稍微调小 1px 字号 */
+      }
+
+      /* 4. 保护右侧按钮：绝对不准缩水变窄 */
+      .nav-right {
+          flex-shrink: 0 !important;
+          margin-left: auto !important;
+          gap: 12px !important;
+      }
+      .nav-btn {
+          flex-shrink: 0 !important;
+          white-space: nowrap !important;
+          padding: 8px 14px !important;
+      }
+
+      /* 5. 保护 Logo：不准变窄 */
+      .logo {
+          flex-shrink: 0 !important;
+          width: 160px !important; /* 稍微微调 Logo */
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+/* ============================================================ */
+
     document.addEventListener('click', (e) => {
       if (e.target.closest('.image-card')) return;
       if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
