@@ -127,7 +127,7 @@ html, body {
   font-weight: 700;          /* 加粗 */
   color: #ff6200;            /* 橙色，和你LOGO色调呼应 */
   text-align: center;        /* 居中显示 */
-  margin: 120px 0 20px;       /* 上下留白，分隔内容 */
+  margin: 220px 0 20px;       /* 上下留白，分隔内容 */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 现代字体 */
   letter-spacing: 1.2px;     /* 字间距微调 */
 }
