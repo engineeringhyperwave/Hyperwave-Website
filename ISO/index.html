@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Visitor Registration - Hyperwave Systems Engineering</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;font-size:16px}
+.header{background:#fff;padding:12px 15px;text-align:center;border-bottom:3px solid #ff6200;position:sticky;top:0;z-index:99}
+.header img{height:45px}
+.container{max-width:500px;margin:0 auto;padding:15px 15px 60px}
+.card{background:#fff;border-radius:10px;padding:20px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.doc-ref{font-size:11px;color:#999;text-align:right;margin-bottom:10px}
+h2{font-size:18px;color:#000;margin-bottom:5px}
+.subtitle{font-size:13px;color:#666;margin-bottom:15px;line-height:1.5}
+.section-tag{font-size:11px;color:#ff6200;font-weight:bold;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+label{font-size:14px;color:#444;display:block;margin-bottom:5px;margin-top:14px}
+label span{color:#ff6200}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;padding:12px;border:1.5px solid #ddd;border-radius:8px;font-size:15px;-webkit-appearance:none;appearance:none;background:#fff}
+input:focus,textarea:focus{border-color:#ff6200;outline:none}
+input:disabled{background:#f0f0f0;color:#888}
+textarea{resize:none;height:70px}
+.btn{width:100%;padding:15px;background:#ff6200;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;margin-top:15px;font-weight:bold;-webkit-tap-highlight-color:transparent}
+.btn:active{background:#ea5a00}
+.btn:disabled{background:#ccc;cursor:not-allowed}
+.hidden{display:none}
+.error-msg{color:#dc3545;font-size:13px;margin-top:8px;display:none}
+.ic-hint{font-size:12px;color:#999;margin-top:5px}
+.checkbox-wrap{background:#fff4ee;border:1.5px solid #ffd4b3;border-radius:8px;padding:14px;margin-top:10px;display:flex;align-items:flex-start;gap:12px}
+.checkbox-wrap input[type=checkbox]{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:#ff6200}
+.checkbox-wrap label{font-size:14px;color:#333;margin:0}
+
+/* 🎬 针对 9:16 竖屏视频优化播放器比例（从原本的 56.25% 拓宽到 100% 并在内部限制高度或调整比例） */
+.video-wrap{position:relative;width:100%;padding-bottom:120%;height:0;margin-bottom:15px;border-radius:10px;overflow:hidden;background:#000}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+.pdf-btns{display:flex;gap:10px;margin-bottom:15px}
+.pdf-btn{flex:1;padding:13px 10px;border-radius:8px;font-size:14px;text-align:center;border:2px solid #ff6200;background:#fff;color:#ff6200;text-decoration:none;display:block;font-weight:bold;cursor:pointer}
+.pdf-btn:active{background:#fff4ee}
+.radio-group{display:flex;gap:10px;margin-top:8px}
+.radio-label{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer;padding:10px 15px;border:1.5px solid #ddd;border-radius:8px;flex:1;justify-content:center}
+.radio-label input{width:18px;height:18px;accent-color:#ff6200}
+.radio-label.selected{border-color:#ff6200;background:#fff4ee;color:#ff6200;font-weight:bold}
+.prop-row{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+.prop-num{font-size:14px;color:#666;min-width:18px}
+.prop-row input{margin-bottom:0;font-size:14px}
+hr{border:none;border-top:1px solid #eee;margin:18px 0}
+.rules-box{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:15px;font-size:13px;color:#555;line-height:1.7}
+.rules-box h4{font-size:13px;color:#333;margin-bottom:8px}
+.rules-col{display:flex;gap:12px;margin:10px 0}
+.rules-col>div{flex:1}
+.rules-box ul{padding-left:15px}
+.rules-box li{margin-bottom:4px}
+.emergency-info{background:#fff4ee;border-left:3px solid #ff6200;padding:10px 12px;border-radius:4px;margin-top:10px;font-size:12px;color:#555;line-height:1.7}
+.welcome-banner{background:#fff4ee;border-left:4px solid #ff6200;padding:12px 15px;border-radius:6px;margin-bottom:15px}
+.welcome-banner strong{color:#ff6200;font-size:16px}
+.welcome-banner p{font-size:13px;color:#666;margin-top:3px}
+.time-btns{display:flex;gap:10px;margin-top:15px}
+.btn-in{background:#28a745;flex:1;padding:15px;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-out{background:#dc3545;flex:1;padding:15px;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-in:active{background:#218838}
+.btn-out:active{background:#c82333}
+.success-wrap{text-align:center;padding:30px 10px}
+.success-icon{font-size:70px;margin-bottom:15px}
+.success-wrap h2{color:#28a745;font-size:22px;margin-bottom:10px}
+.success-wrap p{color:#666;font-size:15px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="logo1.png" alt="Hyperwave Systems Engineering Sdn Bhd">
+</div>
+
+<div class="container">
+
+  <div id="step1">
+    <div class="card">
+      <div class="doc-ref">HYP-HRA-F07 | Rev.: 00</div>
+      <h2>Visitor Registration</h2>
+      <p class="subtitle">Enter your IC or Passport Number to begin.</p>
+      <label>NRIC / Passport No. <span>*</span></label>
+      <input type="text" id="icInput" placeholder="IC / Passport Number" maxlength="20" inputmode="text">
+      <p class="ic-hint">Symbols and spaces will be removed automatically.</p>
+      <p class="error-msg" id="icError">Please enter your IC or Passport number.</p>
+      <button class="btn" id="btnCheckIC" onclick="checkIC()">Continue →</button>
+    </div>
+  </div>
+
+  <div id="stepMedia" class="hidden">
+    <div class="card">
+      <div class="section-tag">Step 1 of 2 — Safety Briefing</div>
+      <h2>Watch & Read Before Proceeding</h2>
+      <p class="subtitle">Please complete both items below before filling in the registration form.</p>
+      
+      <div class="video-wrap">
+        <iframe src="https://drive.google.com/file/d/1aQ2us7h1pOQtzMSeDJrWjfxP_0N5W0RH/preview" 
+                allow="autoplay; fullscreen" 
+                allowfullscreen="true" 
+                webkitallowfullscreen="true" 
+                mozallowfullscreen="true" 
+                msallowfullscreen="true"></iframe>
+      </div>
+      
+      <div class="pdf-btns">
+        <a class="pdf-btn" href="safety-briefing.pdf" target="_blank">📄 Open PDF</a>
+        <a class="pdf-btn" href="safety-briefing.pdf" download="safety-briefing.pdf" onclick="handleDownloadFallback(event, this.href)">⬇️ Download PDF</a>
+      </div>
+      <div class="checkbox-wrap">
+        <input type="checkbox" id="checkVideo" onchange="checkBothDone()">
+        <label for="checkVideo">I have watched the safety briefing video and understood its contents.</label>
+      </div>
+      <div class="checkbox-wrap" style="margin-top:10px">
+        <input type="checkbox" id="checkPDF" onchange="checkBothDone()">
+        <label for="checkPDF">I have read the safety PDF document and understood its contents.</label>
+      </div>
+      <button class="btn" id="proceedBtn" disabled onclick="showForm()">Proceed to Registration →</button>
+    </div>
+  </div>
+
+  <div id="stepForm" class="hidden">
+    <div class="card">
+      <div class="doc-ref">HYP-HRA-F07 | Rev.: 00</div>
+      <div class="section-tag">Step 2 of 2 — Registration Form</div>
+
+      <label>Date</label>
+      <input type="text" id="fDate" disabled>
+
+      <label>Visitor's Full Name <span>*</span></label>
+      <input type="text" id="fName" placeholder="Full Name">
+
+      <label>Company <span>*</span></label>
+      <input type="text" id="fCompany" placeholder="Company Name">
+
+      <label>NRIC / Passport No.</label>
+      <input type="text" id="fIC" disabled>
+
+      <label>Contact No. <span>*</span></label>
+      <input type="tel" id="fContact" placeholder="+60123456789 / 0881234567 / +6512345678" inputmode="tel">
+
+      <label>Contact During Emergency – Name <span>*</span></label>
+      <input type="text" id="fEmergencyName" placeholder="Emergency Contact Name">
+
+      <label>Contact During Emergency – Contact No. <span>*</span></label>
+      <input type="tel" id="fEmergencyContact" placeholder="+60123456789 / 0881234567 / +6512345678" inputmode="tel">
+
+      <label>Visitor Of / Host <span>*</span></label>
+      <input type="text" id="fHost" placeholder="Name of person you are visiting">
+
+      <label>Department <span>*</span></label>
+      <input type="text" id="fDepartment" placeholder="Department">
+
+      <hr>
+      <div class="section-tag">Health Declaration</div>
+
+      <label>Have you visited any countries with pandemic during the last 3 months? <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label selected" id="lbl-pandemic-no"><input type="radio" name="pandemic" value="No" checked onchange="handleRadio('pandemic','pandemicDetail','lbl-pandemic-no','lbl-pandemic-yes')"> No</label>
+        <label class="radio-label" id="lbl-pandemic-yes"><input type="radio" name="pandemic" value="Yes" onchange="handleRadio('pandemic','pandemicDetail','lbl-pandemic-no','lbl-pandemic-yes')"> Yes</label>
+      </div>
+      <textarea id="pandemicDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <label style="margin-top:16px">Are you under any medication that may affect your focus or alertness? <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label selected" id="lbl-medication-no"><input type="radio" name="medication" value="No" checked onchange="handleRadio('medication','medicationDetail','lbl-medication-no','lbl-medication-yes')"> No</label>
+        <label class="radio-label" id="lbl-medication-yes"><input type="radio" name="medication" value="Yes" onchange="handleRadio('medication','medicationDetail','lbl-medication-no','lbl-medication-yes')"> Yes</label>
+      </div>
+      <textarea id="medicationDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <label style="margin-top:16px">Are you suffering from any allergy, e.g. sight, sound, smell, exposure, etc.? <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label selected" id="lbl-allergy-no"><input type="radio" name="allergy" value="No" checked onchange="handleRadio('allergy','allergyDetail','lbl-allergy-no','lbl-allergy-yes')"> No</label>
+        <label class="radio-label" id="lbl-allergy-yes"><input type="radio" name="allergy" value="Yes" onchange="handleRadio('allergy','allergyDetail','lbl-allergy-no','lbl-allergy-yes')"> Yes</label>
+      </div>
+      <textarea id="allergyDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <label style="margin-top:16px">Do you smoke? If yes, please deposit your lighter at the guard station. <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label selected" id="lbl-smoke-no"><input type="radio" name="smoke" value="No" checked onchange="handleRadio('smoke','smokeDetail','lbl-smoke-no','lbl-smoke-yes')"> No</label>
+        <label class="radio-label" id="lbl-smoke-yes"><input type="radio" name="smoke" value="Yes" onchange="handleRadio('smoke','smokeDetail','lbl-smoke-no','lbl-smoke-yes')"> Yes</label>
+      </div>
+      <textarea id="smokeDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <hr>
+      <div class="section-tag">Property Declaration <span style="font-weight:normal;color:#999;text-transform:none">(Optional)</span></div>
+      <p class="subtitle">Please declare items you are bringing in. Videos / Cameras are prohibited.</p>
+      <div class="prop-row">
+        <span class="prop-num">1.</span>
+        <input type="text" id="prop1" placeholder="Item description">
+        <input type="text" id="prop1sn" placeholder="ID / SN">
+      </div>
+      <div class="prop-row">
+        <span class="prop-num">2.</span>
+        <input type="text" id="prop2" placeholder="Item description">
+        <input type="text" id="prop2sn" placeholder="ID / SN">
+      </div>
+      <div class="prop-row">
+        <span class="prop-num">3.</span>
+        <input type="text" id="prop3" placeholder="Item description">
+        <input type="text" id="prop3sn" placeholder="ID / SN">
+      </div>
+
+      <hr>
+      <div class="section-tag">Rules & Regulations</div>
+      <div class="rules-box">
+        <h4>General Rules</h4>
+        <ul>
+          <li>All visitors must register at the guard station before entering Hyperwave premises.</li>
+          <li>Disclose all information in this docket truthfully.</li>
+          <li>Your entry is at your own risk.</li>
+          <li>If driving, reverse park and switch off engine.</li>
+          <li>You are responsible for your own safety.</li>
+        </ul>
+        <div class="rules-col">
+          <div>
+            <h4>✅ DO'S</h4>
+            <ul>
+              <li>Observe all PPE requirements.</li>
+              <li>Walk on designated pathways.</li>
+              <li>Read all safety procedures.</li>
+              <li>Know evacuation routes.</li>
+              <li>Be alert at all times.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>❌ DON'TS</h4>
+            <ul>
+              <li>No smoking.</li>
+              <li>No naked fire or lighters.</li>
+              <li>No dangerous acts.</li>
+              <li>No unescorted entry.</li>
+              <li>No photography/videography.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="emergency-info">
+          <strong>In case of emergency:</strong><br>
+          📞 +603 8070 4498 &nbsp;|&nbsp; 📠 +603 8070 4468<br>
+          4-G, Jalan Kenari 12A, Bandar Puchong Jaya, 47100 Puchong, Selangor
+        </div>
+      </div>
+
+      <p class="error-msg" id="formError">Please fill in all required fields.</p>
+      <button class="btn" id="btnSubmitNew" onclick="submitNew()">Submit Registration ✓</button>
+    </div>
+  </div>
+
+  <div id="stepReturning" class="hidden">
+    <div class="card">
+      <div class="doc-ref">HYP-HRA-F07 | Rev.: 00</div>
+      <div class="welcome-banner">
+        <strong>Welcome back!</strong>
+        <p>Your previous details have been pre-filled. Please review and update if needed.</p>
+      </div>
+      <div class="section-tag">Visitor's Registration Docket</div>
+
+      <label>Date</label>
+      <input type="text" id="rDate" disabled>
+
+      <label>Visitor's Full Name <span>*</span></label>
+      <input type="text" id="rName">
+
+      <label>Company <span>*</span></label>
+      <input type="text" id="rCompany">
+
+      <label>NRIC / Passport No.</label>
+      <input type="text" id="rIC" disabled>
+
+      <label>Contact No. <span>*</span></label>
+      <input type="tel" id="rContact" placeholder="+60123456789 / 0881234567 / +6512345678" inputmode="tel">
+
+      <label>Contact During Emergency – Name <span>*</span></label>
+      <input type="text" id="rEmergencyName">
+
+      <label>Contact During Emergency – Contact No. <span>*</span></label>
+      <input type="tel" id="rEmergencyContact" placeholder="+60123456789 / 0881234567 / +6512345678" inputmode="tel">
+
+      <label>Visitor Of / Host <span>*</span></label>
+      <input type="text" id="rHost">
+
+      <label>Department <span>*</span></label>
+      <input type="text" id="rDepartment">
+
+      <hr>
+      <div class="section-tag">Health Declaration</div>
+
+      <label>Have you visited any countries with pandemic during the last 3 months? <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label" id="lbl-rpandemic-no"><input type="radio" name="rpandemic" value="No" onchange="handleRadio('rpandemic','rpandemicDetail','lbl-rpandemic-no','lbl-rpandemic-yes')"> No</label>
+        <label class="radio-label" id="lbl-rpandemic-yes"><input type="radio" name="rpandemic" value="Yes" onchange="handleRadio('rpandemic','rpandemicDetail','lbl-rpandemic-no','lbl-rpandemic-yes')"> Yes</label>
+      </div>
+      <textarea id="rpandemicDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <label style="margin-top:16px">Are you under any medication that may affect your focus or alertness? <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label" id="lbl-rmedication-no"><input type="radio" name="rmedication" value="No" onchange="handleRadio('rmedication','rmedicationDetail','lbl-rmedication-no','lbl-rmedication-yes')"> No</label>
+        <label class="radio-label" id="lbl-rmedication-yes"><input type="radio" name="rmedication" value="Yes" onchange="handleRadio('rmedication','rmedicationDetail','lbl-rmedication-no','lbl-rmedication-yes')"> Yes</label>
+      </div>
+      <textarea id="rmedicationDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <label style="margin-top:16px">Are you suffering from any allergy, e.g. sight, sound, smell, exposure, etc.? <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label" id="lbl-rallergy-no"><input type="radio" name="rallergy" value="No" onchange="handleRadio('rallergy','rallergyDetail','lbl-rallergy-no','lbl-rallergy-yes')"> No</label>
+        <label class="radio-label" id="lbl-rallergy-yes"><input type="radio" name="rallergy" value="Yes" onchange="handleRadio('rallergy','rallergyDetail','lbl-rallergy-no','lbl-rallergy-yes')"> Yes</label>
+      </div>
+      <textarea id="rallergyDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <label style="margin-top:16px">Do you smoke? If yes, please deposit your lighter at the guard station. <span>*</span></label>
+      <div class="radio-group">
+        <label class="radio-label" id="lbl-rsmoke-no"><input type="radio" name="rsmoke" value="No" onchange="handleRadio('rsmoke','rsmokeDetail','lbl-rsmoke-no','lbl-rsmoke-yes')"> No</label>
+        <label class="radio-label" id="lbl-rsmoke-yes"><input type="radio" name="rsmoke" value="Yes" onchange="handleRadio('rsmoke','rsmokeDetail','lbl-rsmoke-no','lbl-rsmoke-yes')"> Yes</label>
+      </div>
+      <textarea id="rsmokeDetail" placeholder="Please elaborate..." class="hidden" style="margin-top:8px"></textarea>
+
+      <hr>
+      <div class="section-tag">Property Declaration <span style="font-weight:normal;color:#999;text-transform:none">(Optional)</span></div>
+      <p class="subtitle">Please declare items you are bringing in today. Videos / Cameras are prohibited.</p>
+      <div class="prop-row">
+        <span class="prop-num">1.</span>
+        <input type="text" id="rprop1" placeholder="Item description">
+        <input type="text" id="rprop1sn" placeholder="ID / SN">
+      </div>
+      <div class="prop-row">
+        <span class="prop-num">2.</span>
+        <input type="text" id="rprop2" placeholder="Item description">
+        <input type="text" id="rprop2sn" placeholder="ID / SN">
+      </div>
+      <div class="prop-row">
+        <span class="prop-num">3.</span>
+        <input type="text" id="rprop3" placeholder="Item description">
+        <input type="text" id="rprop3sn" placeholder="ID / SN">
+      </div>
+
+      <hr>
+      <div class="section-tag">Time In / Out</div>
+      <div class="time-btns">
+        <button class="btn-in" id="btnTimeIn" onclick="submitReturn('in')">🟢 Time In</button>
+        <button class="btn-out" id="btnTimeOut" onclick="submitReturn('out')">🔴 Time Out</button>
+      </div>
+
+      <hr>
+      <div class="section-tag">Rules & Regulations</div>
+      <div class="rules-box">
+        <h4>General Rules</h4>
+        <ul>
+          <li>All visitors must register at the guard station before entering Hyperwave premises.</li>
+          <li>Disclose all information in this docket truthfully.</li>
+          <li>Your entry is at your own risk.</li>
+          <li>If driving, reverse park and switch off engine.</li>
+          <li>You are responsible for your own safety.</li>
+        </ul>
+        <div class="rules-col">
+          <div>
+            <h4>✅ DO'S</h4>
+            <ul>
+              <li>Observe all PPE requirements.</li>
+              <li>Walk on designated pathways.</li>
+              <li>Read all safety procedures.</li>
+              <li>Know evacuation routes.</li>
+              <li>Be alert at all times.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>❌ DON'TS</h4>
+            <ul>
+              <li>No smoking.</li>
+              <li>No naked fire or lighters.</li>
+              <li>No dangerous acts.</li>
+              <li>No unescorted entry.</li>
+              <li>No photography/videography.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="emergency-info">
+          <strong>In case of emergency:</strong><br>
+          📞 +603 8070 4498 &nbsp;|&nbsp; 📠 +603 8070 4468<br>
+          4-G, Jalan Kenari 12A, Bandar Puchong Jaya, 47100 Puchong, Selangor
+        </div>
+      </div>
+      <p class="error-msg" id="returnError">Please fill in all required fields.</p>
+    </div>
+  </div>
+
+  <div id="stepSuccess" class="hidden">
+    <div class="card success-wrap">
+      <div class="success-icon">✅</div>
+      <h2>Registration Complete!</h2>
+      <p id="successMsg"></p>
+      <button class="btn" style="margin-top:25px" onclick="resetAll()">Done</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbwUYuAcvj334ct2sN0GeePrUaLf12vwPWYJw4XtZzdN1nw_er2u1aRX-faIMlrpjEgM_A/exec";
+let currentIC="";
+
+// 💡 优雅降级处理 PDF 跨域下载失败问题
+function handleDownloadFallback(event, url) {
+  // 如果是跨域或者本地运行，通常会直接变成打开，这里给出友好提示
+  setTimeout(function() {
+    alert("💡 If the download doesn't start automatically:\nPlease click 'Open PDF' instead, then tap the download icon (⬇️) at the top right of the browser window.");
+  }, 1000);
+}
+
+function show(id){
+  ["step1","stepMedia","stepForm","stepReturning","stepSuccess"].forEach(s=>{
+    document.getElementById(s).classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+
+function cleanIC(v){return v.replace(/[^a-zA-Z0-9]/g,"").toUpperCase();}
+function getToday(){return new Date().toLocaleDateString("en-GB");}
+
+function checkIC(){
+  const raw=document.getElementById("icInput").value.trim();
+  if(!raw){document.getElementById("icError").style.display="block";return;}
+  document.getElementById("icError").style.display="none";
+  currentIC=cleanIC(raw);
+  
+  const btn = document.getElementById("btnCheckIC");
+  btn.disabled = true;
+  btn.textContent = "Checking...";
+
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    mode: "cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body:JSON.stringify({action:"check",ic:currentIC})
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    btn.disabled = false;
+    btn.textContent = "Continue →";
+    if(data.found){
+      fillReturning(data);
+      show("stepReturning");
+    } else {
+      document.getElementById("fDate").value=getToday();
+      document.getElementById("fIC").value=currentIC;
+      show("stepMedia");
+    }
+  })
+  .catch(()=>{
+    btn.disabled = false;
+    btn.textContent = "Continue →";
+    alert("Connection error. Please check your network and try again.");
+  });
+}
+
+function checkBothDone(){
+  const v=document.getElementById("checkVideo").checked;
+  const p=document.getElementById("checkPDF").checked;
+  document.getElementById("proceedBtn").disabled=!(v&&p);
+}
+
+function showForm(){show("stepForm");}
+
+function handleRadio(name,detailId,lblNo,lblYes){
+  const val=document.querySelector(`input[name="${name}"]:checked`).value;
+  const el=document.getElementById(detailId);
+  if(val==="Yes"){el.classList.remove("hidden");}
+  else{el.classList.add("hidden");el.value="";}
+  document.getElementById(lblNo).classList.toggle("selected",val==="No");
+  document.getElementById(lblYes).classList.toggle("selected",val==="Yes");
+}
+
+function setRadio(name,value,lblNo,lblYes,detailId,detailVal){
+  const cleanVal = value === "Yes" ? "Yes" : "No";
+  document.querySelectorAll(`input[name="${name}"]`).forEach(r=>{r.checked=(r.value===cleanVal);});
+  document.getElementById(lblNo).classList.toggle("selected",cleanVal==="No");
+  document.getElementById(lblYes).classList.toggle("selected",cleanVal==="Yes");
+  const el=document.getElementById(detailId);
+  if(cleanVal==="Yes"){el.classList.remove("hidden");el.value=detailVal||"";}
+  else{el.classList.add("hidden");el.value="";}
+}
+
+function fillReturning(d){
+  document.getElementById("rDate").value=getToday();
+  document.getElementById("rName").value=d.name||"";
+  document.getElementById("rCompany").value=d.company||"";
+  document.getElementById("rIC").value=currentIC;
+  document.getElementById("rContact").value=d.contact||"";
+  document.getElementById("rEmergencyName").value=d.emergencyName||"";
+  document.getElementById("rEmergencyContact").value=d.emergencyContact||"";
+  document.getElementById("rHost").value=d.host||"";
+  document.getElementById("rDepartment").value=d.department||"";
+  setRadio("rpandemic",d.pandemic||"No","lbl-rpandemic-no","lbl-rpandemic-yes","rpandemicDetail",d.pandemicDetails);
+  setRadio("rmedication",d.medication||"No","lbl-rmedication-no","lbl-rmedication-yes","rmedicationDetail",d.medicationDetails);
+  setRadio("rallergy",d.allergy||"No","lbl-rallergy-no","lbl-rallergy-yes","rallergyDetail",d.allergyDetails);
+  setRadio("rsmoke",d.smoke||"No","lbl-rsmoke-no","lbl-rsmoke-yes","rsmokeDetail",d.smokeDetails);
+}
+
+function getRadio(name){const r=document.querySelector(`input[name="${name}"]:checked`);return r?r.value:"No";}
+function validateFields(fields){return fields.every(id=>document.getElementById(id).value.trim()!=="");}
+
+function buildPayload(prefix,timeIn){
+  const isNew=prefix==="f";
+  return{
+    timeIn:timeIn,
+    ic:currentIC,
+    name:document.getElementById(prefix+"Name").value.trim(),
+    company:document.getElementById(prefix+"Company").value.trim(),
+    contact:document.getElementById(prefix+"Contact").value.trim(),
+    emergencyName:document.getElementById(prefix+"EmergencyName").value.trim(),
+    emergencyContact:document.getElementById(prefix+"EmergencyContact").value.trim(),
+    host:document.getElementById(prefix+"Host").value.trim(),
+    department:document.getElementById(prefix+"Department").value.trim(),
+    pandemic:getRadio(isNew?"pandemic":"rpandemic"),
+    pandemicDetails:document.getElementById(isNew?"pandemicDetail":"rpandemicDetail").value,
+    medication:getRadio(isNew?"medication":"rmedication"),
+    medicationDetails:document.getElementById(isNew?"medicationDetail":"rmedicationDetail").value,
+    allergy:getRadio(isNew?"allergy":"rallergy"),
+    allergyDetails:document.getElementById(isNew?"allergyDetail":"rallergyDetail").value,
+    smoke:getRadio(isNew?"smoke":"rsmoke"),
+    smokeDetails:document.getElementById(isNew?"smokeDetail":"rsmokeDetail").value,
+    property1:document.getElementById(isNew?"prop1":"rprop1").value,
+    property1sn:document.getElementById(isNew?"prop1sn":"rprop1sn").value,
+    property2:document.getElementById(isNew?"prop2":"rprop2").value,
+    property2sn:document.getElementById(isNew?"prop2sn":"rprop2sn").value,
+    property3:document.getElementById(isNew?"prop3":"rprop3").value,
+    property3sn:document.getElementById(isNew?"prop3sn":"rprop3sn").value
+  };
+}
+
+function submitNew(){
+  const required=["fName","fCompany","fContact","fEmergencyName","fEmergencyContact","fHost","fDepartment"];
+  if(!validateFields(required)){document.getElementById("formError").style.display="block";return;}
+  document.getElementById("formError").style.display="none";
+  
+  const btn = document.getElementById("btnSubmitNew");
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    mode: "cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body:JSON.stringify({action:"register",data:buildPayload("f",true)})
+  })
+  .then(r=>r.json())
+  .then(()=>{
+    btn.disabled = false;
+    btn.textContent = "Submit Registration ✓";
+    document.getElementById("successMsg").textContent="Welcome, "+document.getElementById("fName").value.trim()+"! Your registration has been recorded.";
+    show("stepSuccess");
+  })
+  .catch(()=>{
+    btn.disabled = false;
+    btn.textContent = "Submit Registration ✓";
+    alert("Submission error. Please try again.");
+  });
+}
+
+function submitReturn(action){
+  const required=["rName","rCompany","rContact","rEmergencyName","rEmergencyContact","rHost","rDepartment"];
+  if(!validateFields(required)){document.getElementById("returnError").style.display="block";return;}
+  document.getElementById("returnError").style.display="none";
+  
+  const btnIn = document.getElementById("btnTimeIn");
+  const btnOut = document.getElementById("btnTimeOut");
+  btnIn.disabled = true;
+  btnOut.disabled = true;
+
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    mode: "cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body:JSON.stringify({action:"register",data:buildPayload("r",action==="in")})
+  })
+  .then(r=>r.json())
+  .then(()=>{
+    btnIn.disabled = false;
+    btnOut.disabled = false;
+    const msg=action==="in"?"Time In recorded. Welcome back!":"Time Out recorded. Thank you for visiting!";
+    document.getElementById("successMsg").textContent=msg;
+    show("stepSuccess");
+  })
+  .catch(()=>{
+    btnIn.disabled = false;
+    btnOut.disabled = false;
+    alert("Submission error. Please try again.");
+  });
+}
+
+function resetAll(){
+  currentIC="";
+  document.getElementById("icInput").value="";
+  document.getElementById("checkVideo").checked=false;
+  document.getElementById("checkPDF").checked=false;
+  document.getElementById("proceedBtn").disabled=true;
+  
+  ["fName","fCompany","fContact","fEmergencyName","fEmergencyContact","fHost","fDepartment","pandemicDetail","medicationDetail","allergyDetail","smokeDetail","prop1","prop1sn","prop2","prop2sn","prop3","prop3sn"].forEach(id => {
+     document.getElementById(id).value = "";
+  });
+  show("step1");
+}
+</script>
+</body>
+</html>
